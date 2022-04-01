@@ -1,0 +1,60 @@
+name: Run cppcheck and deploy to GitHub Pages
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    # Every week on Monday at midnight (UTC).
+    # This keeps the generated Cppcheck reports fresh.
+    - cron: '0 0 * * 1'
+
+jobs:
+  cppcheck:
+    name: Run cppcheck and deploy to GitHub Pages
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run cppcheck
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -qqq cppcheck
+
+          BASEDIR="$PWD"
+
+          # Use absolute paths so that we can `cd` without having to go back to the parent directory manually.
+          for branch in "master" "3.x"; do
+            echo ""
+            echo "================================================================"
+            echo "Running Cppcheck on branch $branch..."
+            echo "================================================================"
+
+            git clone --depth=1 https://github.com/godotengine/godot.git --branch="$branch" "$BASEDIR/godot-$branch/"
+            cd "$BASEDIR/godot-$branch/"
+
+            mkdir -p "$BASEDIR/.github/dist/$branch/"
+            cppcheck -ithirdparty -i3rdparty -itests -itest -itoolchain -itools --enable=all --force --output-file="$BASEDIR/.github/dist/$branch/cppcheck.xml" --xml --xml-version=2 .
+            cppcheck-htmlreport --source-dir=. --title=project --file="$BASEDIR/.github/dist/$branch/cppcheck.xml" --report-dir="$BASEDIR/.github/dist/$branch"
+
+            # Append the branch to the list of branches for the website.
+            echo "<li><a href="$branch/"><code>$branch</code></a></li>" >> "$BASEDIR/.github/dist/branches.html"
+          done
+
+          cat "$BASEDIR/.github/dist/header.html" "$BASEDIR/.github/dist/branches.html" "$BASEDIR/.github/dist/footer.html" > "$BASEDIR/.github/dist/index.html"
+
+          # Clean up files that don't need to be deployed.
+          rm -f "$BASEDIR/.github/dist/header.html" "$BASEDIR/.github/dist/branches.html" "$BASEDIR/.github/dist/footer.html"
+
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        # Only deploy from the `master` branch, and never deploy from pull requests.
+        if: ${{ (github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/master' }}
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # The branch the action should deploy to.
+          BRANCH: gh-pages
+          # The folder the action should deploy.
+          FOLDER: .github/dist
+          # Artifacts are large; don't keep the branch's history.
+          SINGLE_COMMIT: true
