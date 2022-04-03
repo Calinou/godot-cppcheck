@@ -37,8 +37,10 @@ jobs:
             cppcheck -ithirdparty -i3rdparty -itests -itest -itoolchain -itools --enable=all --force --output-file="$BASEDIR/.github/dist/$branch/cppcheck.xml" --xml --xml-version=2 .
             cppcheck-htmlreport --source-dir=. --title=project --file="$BASEDIR/.github/dist/$branch/cppcheck.xml" --report-dir="$BASEDIR/.github/dist/$branch"
 
+            hash="$(git rev-parse HEAD)"
+
             # Append the branch to the list of branches for the website.
-            echo "<li><a href="$branch/"><code>$branch</code></a></li>" >> "$BASEDIR/.github/dist/branches.html"
+            echo "<li><a href=\"$branch/\"><code>$branch</code></a> (generated from commit <a href=\"https://github.com/godotengine/godot/commit/$hash\"><code>$hash</code></a>)</li>" >> "$BASEDIR/.github/dist/branches.html"
           done
 
           cat "$BASEDIR/.github/dist/header.html" "$BASEDIR/.github/dist/branches.html" "$BASEDIR/.github/dist/footer.html" > "$BASEDIR/.github/dist/index.html"
