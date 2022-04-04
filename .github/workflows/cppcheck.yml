@@ -15,26 +15,33 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          # Required to switch to the `gh-pages` branch during the job.
+          fetch-depth: 0
 
       - name: Run cppcheck
-        env:
-          CPPCHECK_VERSION: "2.7"
         run: |
           sudo apt-get update -qq
           # Pygments is required by cppcheck-htmlreport.
           sudo apt-get install -qqq build-essential cmake ninja-build python-pygments
 
-          curl -LO https://github.com/danmar/cppcheck/archive/$CPPCHECK_VERSION.tar.gz
-          tar xf $CPPCHECK_VERSION.tar.gz
-          pushd cppcheck-$CPPCHECK_VERSION/
+          curl -L https://github.com/danmar/cppcheck/archive/2.7.tar.gz -o /tmp/cppcheck.tar.gz
+          tar xf /tmp/cppcheck.tar.gz --strip-components=1 --one-top-level=/tmp/cppcheck/
+          pushd /tmp/cppcheck/
           cmake -G Ninja -DUSE_MATCHCOMPILER=ON -DCMAKE_BUILD_TYPE=Release -B build
           cmake --build build
           sudo cmake --build build --target install
           sudo cp htmlreport/cppcheck-htmlreport /usr/local/bin/cppcheck-htmlreport
-          which cppcheck-htmlreport
           popd
 
           BASEDIR="$PWD"
+
+          # We'll need those files later, but they will no longer exist once we switch branches.
+          cp "$BASEDIR/.github/dist/header.html" /tmp/header.html
+          cp "$BASEDIR/.github/dist/footer.html" /tmp/footer.html
+
+          # Switch branches to keep old files in the deployment (we need this for XML history).
+          git switch gh-pages
 
           # Use absolute paths so that we can `cd` without having to go back to the parent directory manually.
           for branch in "master" "3.x"; do
@@ -43,10 +50,19 @@ jobs:
             echo "Running Cppcheck on branch $branch..."
             echo "================================================================"
 
-            git clone --depth=1 https://github.com/godotengine/godot.git --branch="$branch" "$BASEDIR/godot-$branch/"
-            cd "$BASEDIR/godot-$branch/"
+            git clone --depth=1 https://github.com/godotengine/godot.git --branch="$branch" "/tmp/godot-$branch/"
+            cd "/tmp/godot-$branch/"
 
             mkdir -p "$BASEDIR/.github/dist/$branch/"
+
+            hash="$(git rev-parse HEAD)"
+            date="$(git log -1 --format=%cd --date=short)"
+
+            # Remove previous HTML report files (but keep previous XML files),
+            # as we switched to the `gh-pages` branch at this point.
+            rm -rf "$BASEDIR/.github/dist/$branch/"
+
+            mkdir -p "$BASEDIR/.github/dist/$branch/" "$BASEDIR/.github/dist/xml/$branch/"
 
             # Supress frequent false positives. Godot also doesn't use STL containers,
             # so `useStlAlgorithm` emits false positives.
@@ -59,27 +75,27 @@ jobs:
                 --suppress=nullPointerRedundantCheck \
                 --enable=all \
                 --force \
-                --output-file="$BASEDIR/.github/dist/$branch/cppcheck.xml" \
+                --output-file="$BASEDIR/.github/dist/xml/$branch/cppcheck_${date}_${hash}.xml" \
                 --xml \
                 --xml-version=2 \
                 .
 
+            ls -l "$BASEDIR/.github/dist/"
+            echo "xml"
+            ls -l "$BASEDIR/.github/dist/xml/"
+            tree "$BASEDIR/.github/dist/"
+
             cppcheck-htmlreport \
                 --source-dir=. \
-                --title=project \
-                --file="$BASEDIR/.github/dist/$branch/cppcheck.xml" \
+                --title="Godot - branch: $branch, commit: $hash ($date)" \
+                --file="$BASEDIR/.github/dist/xml/$branch/cppcheck_${date}_${hash}.xml" \
                 --report-dir="$BASEDIR/.github/dist/$branch"
 
-            hash="$(git rev-parse HEAD)"
-
             # Append the branch to the list of branches for the website.
-            echo "<li><a href=\"$branch/\"><code>$branch</code></a> (generated from commit <a href=\"https://github.com/godotengine/godot/commit/$hash\"><code>$hash</code></a>)</li>" >> "$BASEDIR/.github/dist/branches.html"
+            echo "<li><a href=\"$branch/\"><code>$branch</code></a> (generated from commit <a href=\"https://github.com/godotengine/godot/commit/$hash\"><code>$hash</code></a>)</li>" >> "/tmp/branches.html"
           done
 
-          cat "$BASEDIR/.github/dist/header.html" "$BASEDIR/.github/dist/branches.html" "$BASEDIR/.github/dist/footer.html" > "$BASEDIR/.github/dist/index.html"
-
-          # Clean up files that don't need to be deployed.
-          rm -f "$BASEDIR/.github/dist/header.html" "$BASEDIR/.github/dist/branches.html" "$BASEDIR/.github/dist/footer.html"
+          cat "/tmp/header.html" "/tmp/branches.html" "/tmp/footer.html" > "$BASEDIR/.github/dist/index.html"
 
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
