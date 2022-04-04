@@ -17,9 +17,22 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run cppcheck
+        env:
+          CPPCHECK_VERSION: "2.7"
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -qqq cppcheck
+          # Pygments is required by cppcheck-htmlreport.
+          sudo apt-get install -qqq build-essential cmake ninja-build python-pygments
+
+          curl -LO https://github.com/danmar/cppcheck/archive/$CPPCHECK_VERSION.tar.gz
+          tar xf $CPPCHECK_VERSION.tar.gz
+          pushd cppcheck-$CPPCHECK_VERSION/
+          cmake -G Ninja -DUSE_MATCHCOMPILER=ON -DCMAKE_BUILD_TYPE=Release -B build
+          cmake --build build
+          sudo cmake --build build --target install
+          sudo cp htmlreport/cppcheck-htmlreport /usr/local/bin/cppcheck-htmlreport
+          which cppcheck-htmlreport
+          popd
 
           BASEDIR="$PWD"
 
@@ -34,8 +47,28 @@ jobs:
             cd "$BASEDIR/godot-$branch/"
 
             mkdir -p "$BASEDIR/.github/dist/$branch/"
-            cppcheck -ithirdparty -i3rdparty -itests -itest -itoolchain -itools --enable=all --force --output-file="$BASEDIR/.github/dist/$branch/cppcheck.xml" --xml --xml-version=2 .
-            cppcheck-htmlreport --source-dir=. --title=project --file="$BASEDIR/.github/dist/$branch/cppcheck.xml" --report-dir="$BASEDIR/.github/dist/$branch"
+
+            # Supress frequent false positives. Godot also doesn't use STL containers,
+            # so `useStlAlgorithm` emits false positives.
+            cppcheck \
+                -ithirdparty -i3rdparty -itests -itest -itoolchain -itools \
+                --std=c++17 \
+                --suppress=useStlAlgorithm \
+                --suppress=unknownMacro \
+                --suppress=unusedFunction \
+                --suppress=nullPointerRedundantCheck \
+                --enable=all \
+                --force \
+                --output-file="$BASEDIR/.github/dist/$branch/cppcheck.xml" \
+                --xml \
+                --xml-version=2 \
+                .
+
+            cppcheck-htmlreport \
+                --source-dir=. \
+                --title=project \
+                --file="$BASEDIR/.github/dist/$branch/cppcheck.xml" \
+                --report-dir="$BASEDIR/.github/dist/$branch"
 
             hash="$(git rev-parse HEAD)"
 
