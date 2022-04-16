@@ -40,8 +40,12 @@ jobs:
           cp "$BASEDIR/.github/dist/header.html" /tmp/header.html
           cp "$BASEDIR/.github/dist/footer.html" /tmp/footer.html
 
-          # Switch branches to keep old files in the deployment (we need this for XML history).
+
+          # Switch branches to copy old XML reports for deployment (we need this to keep a history across commits).
           git switch gh-pages
+          mkdir -p "$BASEDIR/.github/dist/"
+          cp -r "$BASEDIR/xml/" "$BASEDIR/.github/dist/"
+          git switch -
 
           # Use absolute paths so that we can `cd` without having to go back to the parent directory manually.
           for branch in "master" "3.x"; do
@@ -60,7 +64,7 @@ jobs:
 
             # Remove previous HTML report files (but keep previous XML files),
             # as we switched to the `gh-pages` branch at this point.
-            rm -rf "$BASEDIR/.github/dist/$branch/"
+            # rm -rf "$BASEDIR/.github/dist/$branch/"
 
             mkdir -p "$BASEDIR/.github/dist/$branch/" "$BASEDIR/.github/dist/xml/$branch/"
 
