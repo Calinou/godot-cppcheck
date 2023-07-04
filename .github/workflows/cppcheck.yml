@@ -37,9 +37,7 @@ jobs:
           BASEDIR="$PWD"
 
           # We'll need those files later, but they will no longer exist once we switch branches.
-          cp "$BASEDIR/.github/dist/header.html" /tmp/header.html
-          cp "$BASEDIR/.github/dist/footer.html" /tmp/footer.html
-
+          cp -r "$BASEDIR/"{includes,thirdparty}/ /tmp
 
           # Switch branches to copy old XML reports for deployment (we need this to keep a history across commits).
           git switch gh-pages
@@ -84,10 +82,7 @@ jobs:
                 --xml-version=2 \
                 .
 
-            ls -l "$BASEDIR/.github/dist/"
-            echo "xml"
-            ls -l "$BASEDIR/.github/dist/xml/"
-            tree "$BASEDIR/.github/dist/"
+            tree -sh "$BASEDIR/.github/dist/"
 
             cppcheck-htmlreport \
                 --source-dir=. \
@@ -96,15 +91,17 @@ jobs:
                 --report-dir="$BASEDIR/.github/dist/$branch"
 
             # Append the branch to the list of branches for the website.
-            echo "<li><a href=\"$branch/\"><code>$branch</code></a> (generated from commit <a href=\"https://github.com/godotengine/godot/commit/$hash\"><code>$hash</code></a>)</li>" >> "/tmp/branches.html"
+            echo "<li><a href=\"$branch/\"><code>$branch</code></a> (generated from commit <a href=\"https://github.com/godotengine/godot/commit/$hash\"><code>$hash</code></a>)</li>" >> "/tmp/includes/branches.html"
           done
 
-          cat "/tmp/header.html" "/tmp/branches.html" "/tmp/footer.html" > "$BASEDIR/.github/dist/index.html"
+          cat "/tmp/includes/header.html" "/tmp/includes/branches.html" "/tmp/includes/footer.html" > "$BASEDIR/.github/dist/index.html"
+          cp -r /tmp/thirdparty "$BASEDIR/.github/dist/"
+          touch "$BASEDIR/.github/dist/.nojekyll"
 
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
-        # Only deploy from the `master` branch, and never deploy from pull requests.
-        if: ${{ (github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/master' }}
+        # Only deploy from the `main` branch, and never deploy from pull requests.
+        if: ${{ (github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main' }}
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # The branch the action should deploy to.
