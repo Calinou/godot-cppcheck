@@ -1,0 +1,1564 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cppcheck - HTML report - Godot - branch: master, commit: 215acd52e82f4c575abb715e25e54558deeef998 (2025-04-11)</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #ffffff; }
+.highlight .c { color: #888888 } /* Comment */
+.highlight .err { color: #FF0000; background-color: #FFAAAA } /* Error */
+.highlight .k { color: #008800; font-weight: bold } /* Keyword */
+.highlight .o { color: #333333 } /* Operator */
+.highlight .ch { color: #888888 } /* Comment.Hashbang */
+.highlight .cm { color: #888888 } /* Comment.Multiline */
+.highlight .cp { color: #557799 } /* Comment.Preproc */
+.highlight .cpf { color: #888888 } /* Comment.PreprocFile */
+.highlight .c1 { color: #888888 } /* Comment.Single */
+.highlight .cs { color: #cc0000; font-weight: bold } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008800; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008800; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008800; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #003388; font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { color: #008800; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #333399; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #6600EE; font-weight: bold } /* Literal.Number */
+.highlight .s { background-color: #fff0f0 } /* Literal.String */
+.highlight .na { color: #0000CC } /* Name.Attribute */
+.highlight .nb { color: #007020 } /* Name.Builtin */
+.highlight .nc { color: #BB0066; font-weight: bold } /* Name.Class */
+.highlight .no { color: #003366; font-weight: bold } /* Name.Constant */
+.highlight .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+.highlight .ni { color: #880000; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #FF0000; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0066BB; font-weight: bold } /* Name.Function */
+.highlight .nl { color: #997700; font-weight: bold } /* Name.Label */
+.highlight .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #007700 } /* Name.Tag */
+.highlight .nv { color: #996633 } /* Name.Variable */
+.highlight .ow { color: #000000; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #6600EE; font-weight: bold } /* Literal.Number.Bin */
+.highlight .mf { color: #6600EE; font-weight: bold } /* Literal.Number.Float */
+.highlight .mh { color: #005588; font-weight: bold } /* Literal.Number.Hex */
+.highlight .mi { color: #0000DD; font-weight: bold } /* Literal.Number.Integer */
+.highlight .mo { color: #4400EE; font-weight: bold } /* Literal.Number.Oct */
+.highlight .sa { background-color: #fff0f0 } /* Literal.String.Affix */
+.highlight .sb { background-color: #fff0f0 } /* Literal.String.Backtick */
+.highlight .sc { color: #0044DD } /* Literal.String.Char */
+.highlight .dl { background-color: #fff0f0 } /* Literal.String.Delimiter */
+.highlight .sd { color: #DD4422 } /* Literal.String.Doc */
+.highlight .s2 { background-color: #fff0f0 } /* Literal.String.Double */
+.highlight .se { color: #666666; font-weight: bold; background-color: #fff0f0 } /* Literal.String.Escape */
+.highlight .sh { background-color: #fff0f0 } /* Literal.String.Heredoc */
+.highlight .si { background-color: #eeeeee } /* Literal.String.Interpol */
+.highlight .sx { color: #DD2200; background-color: #fff0f0 } /* Literal.String.Other */
+.highlight .sr { color: #000000; background-color: #fff0ff } /* Literal.String.Regex */
+.highlight .s1 { background-color: #fff0f0 } /* Literal.String.Single */
+.highlight .ss { color: #AA6600 } /* Literal.String.Symbol */
+.highlight .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0066BB; font-weight: bold } /* Name.Function.Magic */
+.highlight .vc { color: #336699 } /* Name.Variable.Class */
+.highlight .vg { color: #dd7700; font-weight: bold } /* Name.Variable.Global */
+.highlight .vi { color: #3333BB } /* Name.Variable.Instance */
+.highlight .vm { color: #996633 } /* Name.Variable.Magic */
+.highlight .il { color: #0000DD; font-weight: bold } /* Literal.Number.Integer.Long */
+    </style>
+    <script>
+      function getStyle(el, styleProp) {
+        var y;
+
+        if (el.currentStyle) {
+          y = el.currentStyle[styleProp];
+        } else if (window.getComputedStyle) {
+          y = document.defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
+        }
+
+        return y;
+      }
+
+      function toggle() {
+        var el = this.expandable_content;
+        var mark = this.expandable_marker;
+
+        if (el.style.display === "block") {
+          el.style.display = "none";
+          mark.textContent = "[+]";
+        } else {
+          el.style.display = "block";
+          mark.textContent = "[-]";
+        }
+      }
+
+      function initExpandables() {
+        var elements = document.querySelectorAll(".expandable");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var el = elements[i];
+          var clickable = el.querySelector("span");
+          var marker = clickable.querySelector(".marker");
+          var content = el.querySelector(".content");
+          var width = clickable.clientWidth - parseInt(getStyle(content, "padding-left")) - parseInt(getStyle(content, "padding-right"));
+          content.style.width = width + "px";
+          clickable.expandable_content = content;
+          clickable.expandable_marker = marker;
+          clickable.addEventListener("click", toggle);
+        }
+      }
+
+      function toggleDisplay(cb) {
+        var elements = document.querySelectorAll("." + cb.id);
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("id-filtered", !cb.checked);
+        }
+
+        updateFileRows();
+      }
+
+      function toggleSeverity(cb) {
+        cb.parentElement.classList.toggle("unchecked", !cb.checked);
+        var elements = document.querySelectorAll(".sev_" + cb.id);
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("severity-filtered", !cb.checked);
+        }
+
+        updateFileRows();
+      }
+
+      function toggleTool(cb) {
+        cb.parentElement.classList.toggle("unchecked", !cb.checked);
+
+        var elements;
+        if (cb.id == "clang-tidy")
+            elements = document.querySelectorAll("[class^=clang-tidy-]");
+        else
+            elements = document.querySelectorAll(".issue:not([class^=clang-tidy-])");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("tool-filtered", !cb.checked);
+        }
+
+        updateFileRows();
+      }
+
+      function toggleAll() {
+        var elements = document.querySelectorAll(".idToggle");
+
+        // starting from 1 since 0 is the "toggle all" input
+        for (var i = 1, len = elements.length; i < len; i++) {
+          var changed = elements[i].checked != elements[0].checked;
+          if (changed) {
+            elements[i].checked = elements[0].checked;
+            toggleDisplay(elements[i]);
+          }
+        }
+      }
+
+      function filterFile(filter) {
+        var elements = document.querySelectorAll(".fileEntry");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var visible = elements[i].querySelector("tr").querySelector("td").textContent.toLowerCase().includes(filter.toLowerCase());
+          elements[i].classList.toggle("text-filtered", !visible);
+        }
+      }
+
+      function filterText(text) {
+        filter = text.toLowerCase();
+        var elements = document.querySelectorAll(".issue");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var visible = false;
+          var fields = elements[i].querySelectorAll("td");
+          for (var n = 0, num = fields.length; n < num; n++) {
+            if (fields[n].textContent.toLowerCase().includes(filter)) {
+              visible = true;
+              break;
+            }
+          }
+          elements[i].classList.toggle("text-filtered", !visible);
+        }
+
+        updateFileRows();
+      }
+
+      function updateFileRows(element) {
+        var elements = document.querySelectorAll(".fileEntry");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var visible = elements[i].querySelector(".issue:not(.id-filtered):not(.severity-filtered):not(.tool-filtered):not(.text-filtered)");
+          elements[i].classList.toggle("file-filtered", !visible);
+        }
+      }
+
+      window.addEventListener("load", initExpandables);
+    </script>
+  </head>
+  <body>
+    <div id="wrapper">
+    <div id="header" class="header">
+      <h1>Cppcheck report - Godot - branch: master, commit: 215acd52e82f4c575abb715e25e54558deeef998 (2025-04-11): scene/3d/visual_instance_3d.cpp</h1>
+
+    </div>
+
+    <div id="menu">
+     <p><a href="index.html">Defects:</a> visual_instance_3d.cpp</p>
+<a href="413.html#line-216"> useInitializationList 216</a>
+    </div>
+    <div id="content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666</pre></div></td><td class="code"><div class="highlight"><pre><span></span><a name="line-1"></a><span class="cm">/**************************************************************************/</span>
+<a name="line-2"></a><span class="cm">/*  visual_instance_3d.cpp                                                */</span>
+<a name="line-3"></a><span class="cm">/**************************************************************************/</span>
+<a name="line-4"></a><span class="cm">/*                         This file is part of:                          */</span>
+<a name="line-5"></a><span class="cm">/*                             GODOT ENGINE                               */</span>
+<a name="line-6"></a><span class="cm">/*                        https://godotengine.org                         */</span>
+<a name="line-7"></a><span class="cm">/**************************************************************************/</span>
+<a name="line-8"></a><span class="cm">/* Copyright (c) 2014-present Godot Engine contributors (see AUTHORS.md). */</span>
+<a name="line-9"></a><span class="cm">/* Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.                  */</span>
+<a name="line-10"></a><span class="cm">/*                                                                        */</span>
+<a name="line-11"></a><span class="cm">/* Permission is hereby granted, free of charge, to any person obtaining  */</span>
+<a name="line-12"></a><span class="cm">/* a copy of this software and associated documentation files (the        */</span>
+<a name="line-13"></a><span class="cm">/* &quot;Software&quot;), to deal in the Software without restriction, including    */</span>
+<a name="line-14"></a><span class="cm">/* without limitation the rights to use, copy, modify, merge, publish,    */</span>
+<a name="line-15"></a><span class="cm">/* distribute, sublicense, and/or sell copies of the Software, and to     */</span>
+<a name="line-16"></a><span class="cm">/* permit persons to whom the Software is furnished to do so, subject to  */</span>
+<a name="line-17"></a><span class="cm">/* the following conditions:                                              */</span>
+<a name="line-18"></a><span class="cm">/*                                                                        */</span>
+<a name="line-19"></a><span class="cm">/* The above copyright notice and this permission notice shall be         */</span>
+<a name="line-20"></a><span class="cm">/* included in all copies or substantial portions of the Software.        */</span>
+<a name="line-21"></a><span class="cm">/*                                                                        */</span>
+<a name="line-22"></a><span class="cm">/* THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        */</span>
+<a name="line-23"></a><span class="cm">/* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     */</span>
+<a name="line-24"></a><span class="cm">/* MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. */</span>
+<a name="line-25"></a><span class="cm">/* IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY   */</span>
+<a name="line-26"></a><span class="cm">/* CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,   */</span>
+<a name="line-27"></a><span class="cm">/* TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE      */</span>
+<a name="line-28"></a><span class="cm">/* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                 */</span>
+<a name="line-29"></a><span class="cm">/**************************************************************************/</span>
+<a name="line-30"></a>
+<a name="line-31"></a><span class="cp">#include</span> <span class="cpf">&quot;visual_instance_3d.h&quot;</span><span class="cp"></span>
+<a name="line-32"></a>
+<a name="line-33"></a><span class="cp">#include</span> <span class="cpf">&quot;core/config/project_settings.h&quot;</span><span class="cp"></span>
+<a name="line-34"></a>
+<a name="line-35"></a><span class="n">AABB</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">get_aabb</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-36"></a>	<span class="n">AABB</span> <span class="n">ret</span><span class="p">;</span>
+<a name="line-37"></a>	<span class="n">GDVIRTUAL_CALL</span><span class="p">(</span><span class="n">_get_aabb</span><span class="p">,</span> <span class="n">ret</span><span class="p">);</span>
+<a name="line-38"></a>	<span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<a name="line-39"></a><span class="p">}</span>
+<a name="line-40"></a>
+<a name="line-41"></a><span class="kt">void</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">_update_visibility</span><span class="p">()</span> <span class="p">{</span>
+<a name="line-42"></a>	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">is_inside_tree</span><span class="p">())</span> <span class="p">{</span>
+<a name="line-43"></a>		<span class="k">return</span><span class="p">;</span>
+<a name="line-44"></a>	<span class="p">}</span>
+<a name="line-45"></a>
+<a name="line-46"></a>	<span class="kt">bool</span> <span class="n">already_visible</span> <span class="o">=</span> <span class="n">_is_vi_visible</span><span class="p">();</span>
+<a name="line-47"></a>	<span class="kt">bool</span> <span class="n">visible</span> <span class="o">=</span> <span class="n">is_visible_in_tree</span><span class="p">();</span>
+<a name="line-48"></a>	<span class="n">_set_vi_visible</span><span class="p">(</span><span class="n">visible</span><span class="p">);</span>
+<a name="line-49"></a>
+<a name="line-50"></a>	<span class="c1">// If making visible, make sure the rendering server is up to date with the transform.</span>
+<a name="line-51"></a>	<span class="k">if</span> <span class="p">(</span><span class="n">visible</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">already_visible</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-52"></a>		<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_is_using_identity_transform</span><span class="p">())</span> <span class="p">{</span>
+<a name="line-53"></a>			<span class="n">Transform3D</span> <span class="n">gt</span> <span class="o">=</span> <span class="n">get_global_transform</span><span class="p">();</span>
+<a name="line-54"></a>			<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_set_transform</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">gt</span><span class="p">);</span>
+<a name="line-55"></a>		<span class="p">}</span>
+<a name="line-56"></a>	<span class="p">}</span>
+<a name="line-57"></a>
+<a name="line-58"></a>	<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_set_visible</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">visible</span><span class="p">);</span>
+<a name="line-59"></a><span class="p">}</span>
+<a name="line-60"></a>
+<a name="line-61"></a><span class="kt">void</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">_physics_interpolated_changed</span><span class="p">()</span> <span class="p">{</span>
+<a name="line-62"></a>	<span class="n">RenderingServer</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_set_interpolated</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">is_physics_interpolated</span><span class="p">());</span>
+<a name="line-63"></a><span class="p">}</span>
+<a name="line-64"></a>
+<a name="line-65"></a><span class="kt">void</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">set_instance_use_identity_transform</span><span class="p">(</span><span class="kt">bool</span> <span class="n">p_enable</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-66"></a>	<span class="c1">// Prevent sending instance transforms when using global coordinates.</span>
+<a name="line-67"></a>	<span class="n">_set_use_identity_transform</span><span class="p">(</span><span class="n">p_enable</span><span class="p">);</span>
+<a name="line-68"></a>
+<a name="line-69"></a>	<span class="k">if</span> <span class="p">(</span><span class="n">is_inside_tree</span><span class="p">())</span> <span class="p">{</span>
+<a name="line-70"></a>		<span class="k">if</span> <span class="p">(</span><span class="n">p_enable</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-71"></a>			<span class="c1">// Want to make sure instance is using identity transform.</span>
+<a name="line-72"></a>			<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_set_transform</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">Transform3D</span><span class="p">());</span>
+<a name="line-73"></a>		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a name="line-74"></a>			<span class="c1">// Want to make sure instance is up to date.</span>
+<a name="line-75"></a>			<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_set_transform</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">get_global_transform</span><span class="p">());</span>
+<a name="line-76"></a>		<span class="p">}</span>
+<a name="line-77"></a>	<span class="p">}</span>
+<a name="line-78"></a><span class="p">}</span>
+<a name="line-79"></a>
+<a name="line-80"></a><span class="kt">void</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">_notification</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_what</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-81"></a>	<span class="k">switch</span> <span class="p">(</span><span class="n">p_what</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-82"></a>		<span class="k">case</span> <span class="nl">NOTIFICATION_ENTER_WORLD</span><span class="p">:</span> <span class="p">{</span>
+<a name="line-83"></a>			<span class="n">ERR_FAIL_COND</span><span class="p">(</span><span class="n">get_world_3d</span><span class="p">().</span><span class="n">is_null</span><span class="p">());</span>
+<a name="line-84"></a>			<span class="n">RenderingServer</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_set_scenario</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">get_world_3d</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">get_scenario</span><span class="p">());</span>
+<a name="line-85"></a>			<span class="n">_update_visibility</span><span class="p">();</span>
+<a name="line-86"></a>		<span class="p">}</span> <span class="k">break</span><span class="p">;</span>
+<a name="line-87"></a>
+<a name="line-88"></a>		<span class="k">case</span> <span class="nl">NOTIFICATION_TRANSFORM_CHANGED</span><span class="p">:</span> <span class="p">{</span>
+<a name="line-89"></a>			<span class="k">if</span> <span class="p">(</span><span class="n">_is_vi_visible</span><span class="p">()</span> <span class="o">||</span> <span class="n">is_physics_interpolated_and_enabled</span><span class="p">())</span> <span class="p">{</span>
+<a name="line-90"></a>				<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_is_using_identity_transform</span><span class="p">())</span> <span class="p">{</span>
+<a name="line-91"></a>					<span class="n">RenderingServer</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_set_transform</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">get_global_transform</span><span class="p">());</span>
+<a name="line-92"></a>
+<a name="line-93"></a>					<span class="c1">// For instance when first adding to the tree, when the previous transform is</span>
+<a name="line-94"></a>					<span class="c1">// unset, to prevent streaking from the origin.</span>
+<a name="line-95"></a>					<span class="k">if</span> <span class="p">(</span><span class="n">_is_physics_interpolation_reset_requested</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">is_physics_interpolated_and_enabled</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">is_inside_tree</span><span class="p">())</span> <span class="p">{</span>
+<a name="line-96"></a>						<span class="k">if</span> <span class="p">(</span><span class="n">_is_vi_visible</span><span class="p">())</span> <span class="p">{</span>
+<a name="line-97"></a>							<span class="n">_notification</span><span class="p">(</span><span class="n">NOTIFICATION_RESET_PHYSICS_INTERPOLATION</span><span class="p">);</span>
+<a name="line-98"></a>						<span class="p">}</span>
+<a name="line-99"></a>						<span class="n">_set_physics_interpolation_reset_requested</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<a name="line-100"></a>					<span class="p">}</span>
+<a name="line-101"></a>				<span class="p">}</span>
+<a name="line-102"></a>			<span class="p">}</span>
+<a name="line-103"></a>		<span class="p">}</span> <span class="k">break</span><span class="p">;</span>
+<a name="line-104"></a>
+<a name="line-105"></a>		<span class="k">case</span> <span class="nl">NOTIFICATION_RESET_PHYSICS_INTERPOLATION</span><span class="p">:</span> <span class="p">{</span>
+<a name="line-106"></a>			<span class="k">if</span> <span class="p">(</span><span class="n">_is_vi_visible</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">is_physics_interpolated</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">is_inside_tree</span><span class="p">())</span> <span class="p">{</span>
+<a name="line-107"></a>				<span class="c1">// We must ensure the RenderingServer transform is up to date before resetting.</span>
+<a name="line-108"></a>				<span class="c1">// This is because NOTIFICATION_TRANSFORM_CHANGED is deferred,</span>
+<a name="line-109"></a>				<span class="c1">// and cannot be relied to be called in order before NOTIFICATION_RESET_PHYSICS_INTERPOLATION.</span>
+<a name="line-110"></a>				<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">_is_using_identity_transform</span><span class="p">())</span> <span class="p">{</span>
+<a name="line-111"></a>					<span class="n">RenderingServer</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_set_transform</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">get_global_transform</span><span class="p">());</span>
+<a name="line-112"></a>				<span class="p">}</span>
+<a name="line-113"></a>
+<a name="line-114"></a>				<span class="n">RenderingServer</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_reset_physics_interpolation</span><span class="p">(</span><span class="n">instance</span><span class="p">);</span>
+<a name="line-115"></a>			<span class="p">}</span>
+<a name="line-116"></a>		<span class="p">}</span> <span class="k">break</span><span class="p">;</span>
+<a name="line-117"></a>
+<a name="line-118"></a>		<span class="k">case</span> <span class="nl">NOTIFICATION_EXIT_WORLD</span><span class="p">:</span> <span class="p">{</span>
+<a name="line-119"></a>			<span class="n">RenderingServer</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_set_scenario</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">RID</span><span class="p">());</span>
+<a name="line-120"></a>			<span class="n">RenderingServer</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_attach_skeleton</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">RID</span><span class="p">());</span>
+<a name="line-121"></a>			<span class="n">_set_vi_visible</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+<a name="line-122"></a>		<span class="p">}</span> <span class="k">break</span><span class="p">;</span>
+<a name="line-123"></a>
+<a name="line-124"></a>		<span class="k">case</span> <span class="nl">NOTIFICATION_VISIBILITY_CHANGED</span><span class="p">:</span> <span class="p">{</span>
+<a name="line-125"></a>			<span class="n">_update_visibility</span><span class="p">();</span>
+<a name="line-126"></a>		<span class="p">}</span> <span class="k">break</span><span class="p">;</span>
+<a name="line-127"></a>	<span class="p">}</span>
+<a name="line-128"></a><span class="p">}</span>
+<a name="line-129"></a>
+<a name="line-130"></a><span class="n">RID</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">get_instance</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-131"></a>	<span class="k">return</span> <span class="n">instance</span><span class="p">;</span>
+<a name="line-132"></a><span class="p">}</span>
+<a name="line-133"></a>
+<a name="line-134"></a><span class="kt">void</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">set_layer_mask</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">p_mask</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-135"></a>	<span class="n">layers</span> <span class="o">=</span> <span class="n">p_mask</span><span class="p">;</span>
+<a name="line-136"></a>	<span class="n">RenderingServer</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_set_layer_mask</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">p_mask</span><span class="p">);</span>
+<a name="line-137"></a><span class="p">}</span>
+<a name="line-138"></a>
+<a name="line-139"></a><span class="kt">uint32_t</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">get_layer_mask</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-140"></a>	<span class="k">return</span> <span class="n">layers</span><span class="p">;</span>
+<a name="line-141"></a><span class="p">}</span>
+<a name="line-142"></a>
+<a name="line-143"></a><span class="kt">void</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">set_layer_mask_value</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_layer_number</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">p_value</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-144"></a>	<span class="n">ERR_FAIL_COND_MSG</span><span class="p">(</span><span class="n">p_layer_number</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;Render layer number must be between 1 and 20 inclusive.&quot;</span><span class="p">);</span>
+<a name="line-145"></a>	<span class="n">ERR_FAIL_COND_MSG</span><span class="p">(</span><span class="n">p_layer_number</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">,</span> <span class="s">&quot;Render layer number must be between 1 and 20 inclusive.&quot;</span><span class="p">);</span>
+<a name="line-146"></a>	<span class="kt">uint32_t</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">get_layer_mask</span><span class="p">();</span>
+<a name="line-147"></a>	<span class="k">if</span> <span class="p">(</span><span class="n">p_value</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-148"></a>		<span class="n">mask</span> <span class="o">|=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">p_layer_number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+<a name="line-149"></a>	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a name="line-150"></a>		<span class="n">mask</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">p_layer_number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
+<a name="line-151"></a>	<span class="p">}</span>
+<a name="line-152"></a>	<span class="n">set_layer_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">);</span>
+<a name="line-153"></a><span class="p">}</span>
+<a name="line-154"></a>
+<a name="line-155"></a><span class="kt">bool</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">get_layer_mask_value</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_layer_number</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-156"></a>	<span class="n">ERR_FAIL_COND_V_MSG</span><span class="p">(</span><span class="n">p_layer_number</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="s">&quot;Render layer number must be between 1 and 20 inclusive.&quot;</span><span class="p">);</span>
+<a name="line-157"></a>	<span class="n">ERR_FAIL_COND_V_MSG</span><span class="p">(</span><span class="n">p_layer_number</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">,</span> <span class="nb">false</span><span class="p">,</span> <span class="s">&quot;Render layer number must be between 1 and 20 inclusive.&quot;</span><span class="p">);</span>
+<a name="line-158"></a>	<span class="k">return</span> <span class="n">layers</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">p_layer_number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
+<a name="line-159"></a><span class="p">}</span>
+<a name="line-160"></a>
+<a name="line-161"></a><span class="kt">void</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">set_sorting_offset</span><span class="p">(</span><span class="kt">float</span> <span class="n">p_offset</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-162"></a>	<span class="n">sorting_offset</span> <span class="o">=</span> <span class="n">p_offset</span><span class="p">;</span>
+<a name="line-163"></a>	<span class="n">RenderingServer</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_set_pivot_data</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">sorting_offset</span><span class="p">,</span> <span class="n">sorting_use_aabb_center</span><span class="p">);</span>
+<a name="line-164"></a><span class="p">}</span>
+<a name="line-165"></a>
+<a name="line-166"></a><span class="kt">float</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">get_sorting_offset</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-167"></a>	<span class="k">return</span> <span class="n">sorting_offset</span><span class="p">;</span>
+<a name="line-168"></a><span class="p">}</span>
+<a name="line-169"></a>
+<a name="line-170"></a><span class="kt">void</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">set_sorting_use_aabb_center</span><span class="p">(</span><span class="kt">bool</span> <span class="n">p_enabled</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-171"></a>	<span class="n">sorting_use_aabb_center</span> <span class="o">=</span> <span class="n">p_enabled</span><span class="p">;</span>
+<a name="line-172"></a>	<span class="n">RenderingServer</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_set_pivot_data</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">sorting_offset</span><span class="p">,</span> <span class="n">sorting_use_aabb_center</span><span class="p">);</span>
+<a name="line-173"></a><span class="p">}</span>
+<a name="line-174"></a>
+<a name="line-175"></a><span class="kt">bool</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">is_sorting_use_aabb_center</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-176"></a>	<span class="k">return</span> <span class="n">sorting_use_aabb_center</span><span class="p">;</span>
+<a name="line-177"></a><span class="p">}</span>
+<a name="line-178"></a>
+<a name="line-179"></a><span class="kt">void</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">_validate_property</span><span class="p">(</span><span class="n">PropertyInfo</span> <span class="o">&amp;</span><span class="n">p_property</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-180"></a>	<span class="k">if</span> <span class="p">(</span><span class="n">p_property</span><span class="p">.</span><span class="n">name</span> <span class="o">==</span> <span class="s">&quot;sorting_offset&quot;</span> <span class="o">||</span> <span class="n">p_property</span><span class="p">.</span><span class="n">name</span> <span class="o">==</span> <span class="s">&quot;sorting_use_aabb_center&quot;</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-181"></a>		<span class="n">p_property</span><span class="p">.</span><span class="n">usage</span> <span class="o">=</span> <span class="n">PROPERTY_USAGE_NONE</span><span class="p">;</span>
+<a name="line-182"></a>	<span class="p">}</span>
+<a name="line-183"></a><span class="p">}</span>
+<a name="line-184"></a>
+<a name="line-185"></a><span class="kt">void</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">_bind_methods</span><span class="p">()</span> <span class="p">{</span>
+<a name="line-186"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_base&quot;</span><span class="p">,</span> <span class="s">&quot;base&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">set_base</span><span class="p">);</span>
+<a name="line-187"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_base&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">get_base</span><span class="p">);</span>
+<a name="line-188"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_instance&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">get_instance</span><span class="p">);</span>
+<a name="line-189"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_layer_mask&quot;</span><span class="p">,</span> <span class="s">&quot;mask&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">set_layer_mask</span><span class="p">);</span>
+<a name="line-190"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_layer_mask&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">get_layer_mask</span><span class="p">);</span>
+<a name="line-191"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_layer_mask_value&quot;</span><span class="p">,</span> <span class="s">&quot;layer_number&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">set_layer_mask_value</span><span class="p">);</span>
+<a name="line-192"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_layer_mask_value&quot;</span><span class="p">,</span> <span class="s">&quot;layer_number&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">get_layer_mask_value</span><span class="p">);</span>
+<a name="line-193"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_sorting_offset&quot;</span><span class="p">,</span> <span class="s">&quot;offset&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">set_sorting_offset</span><span class="p">);</span>
+<a name="line-194"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_sorting_offset&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">get_sorting_offset</span><span class="p">);</span>
+<a name="line-195"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_sorting_use_aabb_center&quot;</span><span class="p">,</span> <span class="s">&quot;enabled&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">set_sorting_use_aabb_center</span><span class="p">);</span>
+<a name="line-196"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;is_sorting_use_aabb_center&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">is_sorting_use_aabb_center</span><span class="p">);</span>
+<a name="line-197"></a>
+<a name="line-198"></a>	<span class="n">GDVIRTUAL_BIND</span><span class="p">(</span><span class="n">_get_aabb</span><span class="p">);</span>
+<a name="line-199"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">INT</span><span class="p">,</span> <span class="s">&quot;layers&quot;</span><span class="p">,</span> <span class="n">PROPERTY_HINT_LAYERS_3D_RENDER</span><span class="p">),</span> <span class="s">&quot;set_layer_mask&quot;</span><span class="p">,</span> <span class="s">&quot;get_layer_mask&quot;</span><span class="p">);</span>
+<a name="line-200"></a>
+<a name="line-201"></a>	<span class="n">ADD_GROUP</span><span class="p">(</span><span class="s">&quot;Sorting&quot;</span><span class="p">,</span> <span class="s">&quot;sorting_&quot;</span><span class="p">);</span>
+<a name="line-202"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">FLOAT</span><span class="p">,</span> <span class="s">&quot;sorting_offset&quot;</span><span class="p">),</span> <span class="s">&quot;set_sorting_offset&quot;</span><span class="p">,</span> <span class="s">&quot;get_sorting_offset&quot;</span><span class="p">);</span>
+<a name="line-203"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">BOOL</span><span class="p">,</span> <span class="s">&quot;sorting_use_aabb_center&quot;</span><span class="p">),</span> <span class="s">&quot;set_sorting_use_aabb_center&quot;</span><span class="p">,</span> <span class="s">&quot;is_sorting_use_aabb_center&quot;</span><span class="p">);</span>
+<a name="line-204"></a><span class="p">}</span>
+<a name="line-205"></a>
+<a name="line-206"></a><span class="kt">void</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">set_base</span><span class="p">(</span><span class="k">const</span> <span class="n">RID</span> <span class="o">&amp;</span><span class="n">p_base</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-207"></a>	<span class="n">RenderingServer</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_set_base</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">p_base</span><span class="p">);</span>
+<a name="line-208"></a>	<span class="n">base</span> <span class="o">=</span> <span class="n">p_base</span><span class="p">;</span>
+<a name="line-209"></a><span class="p">}</span>
+<a name="line-210"></a>
+<a name="line-211"></a><span class="n">RID</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">get_base</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-212"></a>	<span class="k">return</span> <span class="n">base</span><span class="p">;</span>
+<a name="line-213"></a><span class="p">}</span>
+<a name="line-214"></a>
+<a name="line-215"></a><span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">VisualInstance3D</span><span class="p">()</span> <span class="p">{</span>
+<a name="line-216"></a><span class="hll">	<span class="n">instance</span> <span class="o">=</span> <span class="n">RenderingServer</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_create</span><span class="p">();</span><div class="verbose expandable"><span class="error2">&lt;--- Variable 'instance' is assigned in constructor body. Consider performing initialization in initialization list. <span class="marker">[+]</span></span><div class="content">When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;instance&apos; a value by passing the value to the constructor in the initialization list.</div></div>
+</span><a name="line-217"></a>	<span class="n">RenderingServer</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_attach_object_instance_id</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">get_instance_id</span><span class="p">());</span>
+<a name="line-218"></a>	<span class="n">set_notify_transform</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<a name="line-219"></a><span class="p">}</span>
+<a name="line-220"></a>
+<a name="line-221"></a><span class="n">VisualInstance3D</span><span class="o">::~</span><span class="n">VisualInstance3D</span><span class="p">()</span> <span class="p">{</span>
+<a name="line-222"></a>	<span class="n">ERR_FAIL_NULL</span><span class="p">(</span><span class="n">RenderingServer</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">());</span>
+<a name="line-223"></a>	<span class="n">RenderingServer</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">free</span><span class="p">(</span><span class="n">instance</span><span class="p">);</span>
+<a name="line-224"></a><span class="p">}</span>
+<a name="line-225"></a>
+<a name="line-226"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_material_override</span><span class="p">(</span><span class="k">const</span> <span class="n">Ref</span><span class="o">&lt;</span><span class="n">Material</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">p_material</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-227"></a>	<span class="k">if</span> <span class="p">(</span><span class="n">material_override</span><span class="p">.</span><span class="n">is_valid</span><span class="p">())</span> <span class="p">{</span>
+<a name="line-228"></a>		<span class="n">material_override</span><span class="o">-&gt;</span><span class="n">disconnect</span><span class="p">(</span><span class="n">CoreStringName</span><span class="p">(</span><span class="n">property_list_changed</span><span class="p">),</span> <span class="n">callable_mp</span><span class="p">((</span><span class="n">Object</span> <span class="o">*</span><span class="p">)</span><span class="k">this</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">Object</span><span class="o">::</span><span class="n">notify_property_list_changed</span><span class="p">));</span>
+<a name="line-229"></a>	<span class="p">}</span>
+<a name="line-230"></a>	<span class="n">material_override</span> <span class="o">=</span> <span class="n">p_material</span><span class="p">;</span>
+<a name="line-231"></a>	<span class="k">if</span> <span class="p">(</span><span class="n">material_override</span><span class="p">.</span><span class="n">is_valid</span><span class="p">())</span> <span class="p">{</span>
+<a name="line-232"></a>		<span class="n">material_override</span><span class="o">-&gt;</span><span class="n">connect</span><span class="p">(</span><span class="n">CoreStringName</span><span class="p">(</span><span class="n">property_list_changed</span><span class="p">),</span> <span class="n">callable_mp</span><span class="p">((</span><span class="n">Object</span> <span class="o">*</span><span class="p">)</span><span class="k">this</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">Object</span><span class="o">::</span><span class="n">notify_property_list_changed</span><span class="p">));</span>
+<a name="line-233"></a>	<span class="p">}</span>
+<a name="line-234"></a>	<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_material_override</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">p_material</span><span class="p">.</span><span class="n">is_valid</span><span class="p">()</span> <span class="o">?</span> <span class="n">p_material</span><span class="o">-&gt;</span><span class="n">get_rid</span><span class="p">()</span> <span class="o">:</span> <span class="n">RID</span><span class="p">());</span>
+<a name="line-235"></a><span class="p">}</span>
+<a name="line-236"></a>
+<a name="line-237"></a><span class="n">Ref</span><span class="o">&lt;</span><span class="n">Material</span><span class="o">&gt;</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_material_override</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-238"></a>	<span class="k">return</span> <span class="n">material_override</span><span class="p">;</span>
+<a name="line-239"></a><span class="p">}</span>
+<a name="line-240"></a>
+<a name="line-241"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_material_overlay</span><span class="p">(</span><span class="k">const</span> <span class="n">Ref</span><span class="o">&lt;</span><span class="n">Material</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">p_material</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-242"></a>	<span class="n">material_overlay</span> <span class="o">=</span> <span class="n">p_material</span><span class="p">;</span>
+<a name="line-243"></a>	<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_material_overlay</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">p_material</span><span class="p">.</span><span class="n">is_valid</span><span class="p">()</span> <span class="o">?</span> <span class="n">p_material</span><span class="o">-&gt;</span><span class="n">get_rid</span><span class="p">()</span> <span class="o">:</span> <span class="n">RID</span><span class="p">());</span>
+<a name="line-244"></a><span class="p">}</span>
+<a name="line-245"></a>
+<a name="line-246"></a><span class="n">Ref</span><span class="o">&lt;</span><span class="n">Material</span><span class="o">&gt;</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_material_overlay</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-247"></a>	<span class="k">return</span> <span class="n">material_overlay</span><span class="p">;</span>
+<a name="line-248"></a><span class="p">}</span>
+<a name="line-249"></a>
+<a name="line-250"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_transparency</span><span class="p">(</span><span class="kt">float</span> <span class="n">p_transparency</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-251"></a>	<span class="n">transparency</span> <span class="o">=</span> <span class="n">CLAMP</span><span class="p">(</span><span class="n">p_transparency</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">);</span>
+<a name="line-252"></a>	<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_transparency</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">transparency</span><span class="p">);</span>
+<a name="line-253"></a>	<span class="n">update_configuration_warnings</span><span class="p">();</span>
+<a name="line-254"></a><span class="p">}</span>
+<a name="line-255"></a>
+<a name="line-256"></a><span class="kt">float</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_transparency</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-257"></a>	<span class="k">return</span> <span class="n">transparency</span><span class="p">;</span>
+<a name="line-258"></a><span class="p">}</span>
+<a name="line-259"></a>
+<a name="line-260"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_visibility_range_begin</span><span class="p">(</span><span class="kt">float</span> <span class="n">p_dist</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-261"></a>	<span class="n">visibility_range_begin</span> <span class="o">=</span> <span class="n">p_dist</span><span class="p">;</span>
+<a name="line-262"></a>	<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_visibility_range</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">visibility_range_begin</span><span class="p">,</span> <span class="n">visibility_range_end</span><span class="p">,</span> <span class="n">visibility_range_begin_margin</span><span class="p">,</span> <span class="n">visibility_range_end_margin</span><span class="p">,</span> <span class="p">(</span><span class="n">RS</span><span class="o">::</span><span class="n">VisibilityRangeFadeMode</span><span class="p">)</span><span class="n">visibility_range_fade_mode</span><span class="p">);</span>
+<a name="line-263"></a>	<span class="n">update_configuration_warnings</span><span class="p">();</span>
+<a name="line-264"></a><span class="p">}</span>
+<a name="line-265"></a>
+<a name="line-266"></a><span class="kt">float</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_visibility_range_begin</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-267"></a>	<span class="k">return</span> <span class="n">visibility_range_begin</span><span class="p">;</span>
+<a name="line-268"></a><span class="p">}</span>
+<a name="line-269"></a>
+<a name="line-270"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_visibility_range_end</span><span class="p">(</span><span class="kt">float</span> <span class="n">p_dist</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-271"></a>	<span class="n">visibility_range_end</span> <span class="o">=</span> <span class="n">p_dist</span><span class="p">;</span>
+<a name="line-272"></a>	<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_visibility_range</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">visibility_range_begin</span><span class="p">,</span> <span class="n">visibility_range_end</span><span class="p">,</span> <span class="n">visibility_range_begin_margin</span><span class="p">,</span> <span class="n">visibility_range_end_margin</span><span class="p">,</span> <span class="p">(</span><span class="n">RS</span><span class="o">::</span><span class="n">VisibilityRangeFadeMode</span><span class="p">)</span><span class="n">visibility_range_fade_mode</span><span class="p">);</span>
+<a name="line-273"></a>	<span class="n">update_configuration_warnings</span><span class="p">();</span>
+<a name="line-274"></a><span class="p">}</span>
+<a name="line-275"></a>
+<a name="line-276"></a><span class="kt">float</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_visibility_range_end</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-277"></a>	<span class="k">return</span> <span class="n">visibility_range_end</span><span class="p">;</span>
+<a name="line-278"></a><span class="p">}</span>
+<a name="line-279"></a>
+<a name="line-280"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_visibility_range_begin_margin</span><span class="p">(</span><span class="kt">float</span> <span class="n">p_dist</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-281"></a>	<span class="n">visibility_range_begin_margin</span> <span class="o">=</span> <span class="n">p_dist</span><span class="p">;</span>
+<a name="line-282"></a>	<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_visibility_range</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">visibility_range_begin</span><span class="p">,</span> <span class="n">visibility_range_end</span><span class="p">,</span> <span class="n">visibility_range_begin_margin</span><span class="p">,</span> <span class="n">visibility_range_end_margin</span><span class="p">,</span> <span class="p">(</span><span class="n">RS</span><span class="o">::</span><span class="n">VisibilityRangeFadeMode</span><span class="p">)</span><span class="n">visibility_range_fade_mode</span><span class="p">);</span>
+<a name="line-283"></a>	<span class="n">update_configuration_warnings</span><span class="p">();</span>
+<a name="line-284"></a><span class="p">}</span>
+<a name="line-285"></a>
+<a name="line-286"></a><span class="kt">float</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_visibility_range_begin_margin</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-287"></a>	<span class="k">return</span> <span class="n">visibility_range_begin_margin</span><span class="p">;</span>
+<a name="line-288"></a><span class="p">}</span>
+<a name="line-289"></a>
+<a name="line-290"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_visibility_range_end_margin</span><span class="p">(</span><span class="kt">float</span> <span class="n">p_dist</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-291"></a>	<span class="n">visibility_range_end_margin</span> <span class="o">=</span> <span class="n">p_dist</span><span class="p">;</span>
+<a name="line-292"></a>	<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_visibility_range</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">visibility_range_begin</span><span class="p">,</span> <span class="n">visibility_range_end</span><span class="p">,</span> <span class="n">visibility_range_begin_margin</span><span class="p">,</span> <span class="n">visibility_range_end_margin</span><span class="p">,</span> <span class="p">(</span><span class="n">RS</span><span class="o">::</span><span class="n">VisibilityRangeFadeMode</span><span class="p">)</span><span class="n">visibility_range_fade_mode</span><span class="p">);</span>
+<a name="line-293"></a>	<span class="n">update_configuration_warnings</span><span class="p">();</span>
+<a name="line-294"></a><span class="p">}</span>
+<a name="line-295"></a>
+<a name="line-296"></a><span class="kt">float</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_visibility_range_end_margin</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-297"></a>	<span class="k">return</span> <span class="n">visibility_range_end_margin</span><span class="p">;</span>
+<a name="line-298"></a><span class="p">}</span>
+<a name="line-299"></a>
+<a name="line-300"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_visibility_range_fade_mode</span><span class="p">(</span><span class="n">VisibilityRangeFadeMode</span> <span class="n">p_mode</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-301"></a>	<span class="n">visibility_range_fade_mode</span> <span class="o">=</span> <span class="n">p_mode</span><span class="p">;</span>
+<a name="line-302"></a>	<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_visibility_range</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">visibility_range_begin</span><span class="p">,</span> <span class="n">visibility_range_end</span><span class="p">,</span> <span class="n">visibility_range_begin_margin</span><span class="p">,</span> <span class="n">visibility_range_end_margin</span><span class="p">,</span> <span class="p">(</span><span class="n">RS</span><span class="o">::</span><span class="n">VisibilityRangeFadeMode</span><span class="p">)</span><span class="n">visibility_range_fade_mode</span><span class="p">);</span>
+<a name="line-303"></a>	<span class="n">update_configuration_warnings</span><span class="p">();</span>
+<a name="line-304"></a><span class="p">}</span>
+<a name="line-305"></a>
+<a name="line-306"></a><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">VisibilityRangeFadeMode</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_visibility_range_fade_mode</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-307"></a>	<span class="k">return</span> <span class="n">visibility_range_fade_mode</span><span class="p">;</span>
+<a name="line-308"></a><span class="p">}</span>
+<a name="line-309"></a>
+<a name="line-310"></a><span class="k">const</span> <span class="n">StringName</span> <span class="o">*</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">_instance_uniform_get_remap</span><span class="p">(</span><span class="k">const</span> <span class="n">StringName</span> <span class="o">&amp;</span><span class="n">p_name</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-311"></a>	<span class="n">StringName</span> <span class="o">*</span><span class="n">r</span> <span class="o">=</span> <span class="n">instance_shader_parameter_property_remap</span><span class="p">.</span><span class="n">getptr</span><span class="p">(</span><span class="n">p_name</span><span class="p">);</span>
+<a name="line-312"></a>	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-313"></a>		<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">p_name</span><span class="p">;</span>
+<a name="line-314"></a><span class="cp">#ifndef DISABLE_DEPRECATED</span>
+<a name="line-315"></a>		<span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">begins_with</span><span class="p">(</span><span class="s">&quot;shader_uniforms/&quot;</span><span class="p">))</span> <span class="p">{</span>
+<a name="line-316"></a>			<span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;shader_uniforms/&quot;</span><span class="p">,</span> <span class="s">&quot;instance_shader_parameters/&quot;</span><span class="p">);</span>
+<a name="line-317"></a>		<span class="p">}</span>
+<a name="line-318"></a><span class="cp">#endif </span><span class="c1">// DISABLE_DEPRECATED</span>
+<a name="line-319"></a>		<span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">begins_with</span><span class="p">(</span><span class="s">&quot;instance_shader_parameters/&quot;</span><span class="p">))</span> <span class="p">{</span>
+<a name="line-320"></a>			<span class="n">StringName</span> <span class="n">pname</span> <span class="o">=</span> <span class="n">StringName</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+<a name="line-321"></a>			<span class="n">StringName</span> <span class="n">name</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot;instance_shader_parameters/&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
+<a name="line-322"></a>			<span class="n">instance_shader_parameter_property_remap</span><span class="p">[</span><span class="n">pname</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+<a name="line-323"></a>			<span class="k">return</span> <span class="n">instance_shader_parameter_property_remap</span><span class="p">.</span><span class="n">getptr</span><span class="p">(</span><span class="n">pname</span><span class="p">);</span>
+<a name="line-324"></a>		<span class="p">}</span>
+<a name="line-325"></a>		<span class="k">return</span> <span class="k">nullptr</span><span class="p">;</span>
+<a name="line-326"></a>	<span class="p">}</span>
+<a name="line-327"></a>
+<a name="line-328"></a>	<span class="k">return</span> <span class="n">r</span><span class="p">;</span>
+<a name="line-329"></a><span class="p">}</span>
+<a name="line-330"></a>
+<a name="line-331"></a><span class="kt">bool</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">_set</span><span class="p">(</span><span class="k">const</span> <span class="n">StringName</span> <span class="o">&amp;</span><span class="n">p_name</span><span class="p">,</span> <span class="k">const</span> <span class="n">Variant</span> <span class="o">&amp;</span><span class="n">p_value</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-332"></a>	<span class="k">const</span> <span class="n">StringName</span> <span class="o">*</span><span class="n">r</span> <span class="o">=</span> <span class="n">_instance_uniform_get_remap</span><span class="p">(</span><span class="n">p_name</span><span class="p">);</span>
+<a name="line-333"></a>	<span class="k">if</span> <span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-334"></a>		<span class="n">set_instance_shader_parameter</span><span class="p">(</span><span class="o">*</span><span class="n">r</span><span class="p">,</span> <span class="n">p_value</span><span class="p">);</span>
+<a name="line-335"></a>		<span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<a name="line-336"></a>	<span class="p">}</span>
+<a name="line-337"></a><span class="cp">#ifndef DISABLE_DEPRECATED</span>
+<a name="line-338"></a>	<span class="k">if</span> <span class="p">(</span><span class="n">p_name</span> <span class="o">==</span> <span class="n">SNAME</span><span class="p">(</span><span class="s">&quot;use_in_baked_light&quot;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="kt">bool</span><span class="p">(</span><span class="n">p_value</span><span class="p">))</span> <span class="p">{</span>
+<a name="line-339"></a>		<span class="n">set_gi_mode</span><span class="p">(</span><span class="n">GI_MODE_STATIC</span><span class="p">);</span>
+<a name="line-340"></a>		<span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<a name="line-341"></a>	<span class="p">}</span>
+<a name="line-342"></a>
+<a name="line-343"></a>	<span class="k">if</span> <span class="p">(</span><span class="n">p_name</span> <span class="o">==</span> <span class="n">SNAME</span><span class="p">(</span><span class="s">&quot;use_dynamic_gi&quot;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="kt">bool</span><span class="p">(</span><span class="n">p_value</span><span class="p">))</span> <span class="p">{</span>
+<a name="line-344"></a>		<span class="n">set_gi_mode</span><span class="p">(</span><span class="n">GI_MODE_DYNAMIC</span><span class="p">);</span>
+<a name="line-345"></a>		<span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<a name="line-346"></a>	<span class="p">}</span>
+<a name="line-347"></a><span class="cp">#endif </span><span class="c1">// DISABLE_DEPRECATED</span>
+<a name="line-348"></a>	<span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<a name="line-349"></a><span class="p">}</span>
+<a name="line-350"></a>
+<a name="line-351"></a><span class="kt">bool</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">_get</span><span class="p">(</span><span class="k">const</span> <span class="n">StringName</span> <span class="o">&amp;</span><span class="n">p_name</span><span class="p">,</span> <span class="n">Variant</span> <span class="o">&amp;</span><span class="n">r_ret</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-352"></a>	<span class="k">const</span> <span class="n">StringName</span> <span class="o">*</span><span class="n">r</span> <span class="o">=</span> <span class="n">_instance_uniform_get_remap</span><span class="p">(</span><span class="n">p_name</span><span class="p">);</span>
+<a name="line-353"></a>	<span class="k">if</span> <span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-354"></a>		<span class="n">r_ret</span> <span class="o">=</span> <span class="n">get_instance_shader_parameter</span><span class="p">(</span><span class="o">*</span><span class="n">r</span><span class="p">);</span>
+<a name="line-355"></a>		<span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<a name="line-356"></a>	<span class="p">}</span>
+<a name="line-357"></a>
+<a name="line-358"></a>	<span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<a name="line-359"></a><span class="p">}</span>
+<a name="line-360"></a>
+<a name="line-361"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">_get_property_list</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">PropertyInfo</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">p_list</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-362"></a>	<span class="n">List</span><span class="o">&lt;</span><span class="n">PropertyInfo</span><span class="o">&gt;</span> <span class="n">pinfo</span><span class="p">;</span>
+<a name="line-363"></a>	<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_get_shader_parameter_list</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="o">&amp;</span><span class="n">pinfo</span><span class="p">);</span>
+<a name="line-364"></a>	<span class="k">for</span> <span class="p">(</span><span class="n">PropertyInfo</span> <span class="o">&amp;</span><span class="nl">pi</span> <span class="p">:</span> <span class="n">pinfo</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-365"></a>		<span class="kt">bool</span> <span class="n">has_def_value</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<a name="line-366"></a>		<span class="n">Variant</span> <span class="n">def_value</span> <span class="o">=</span> <span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_get_shader_parameter_default_value</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">pi</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+<a name="line-367"></a>		<span class="k">if</span> <span class="p">(</span><span class="n">def_value</span><span class="p">.</span><span class="n">get_type</span><span class="p">()</span> <span class="o">!=</span> <span class="n">Variant</span><span class="o">::</span><span class="n">NIL</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-368"></a>			<span class="n">has_def_value</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<a name="line-369"></a>		<span class="p">}</span>
+<a name="line-370"></a>		<span class="k">if</span> <span class="p">(</span><span class="n">instance_shader_parameters</span><span class="p">.</span><span class="n">has</span><span class="p">(</span><span class="n">pi</span><span class="p">.</span><span class="n">name</span><span class="p">))</span> <span class="p">{</span>
+<a name="line-371"></a>			<span class="n">pi</span><span class="p">.</span><span class="n">usage</span> <span class="o">=</span> <span class="n">PROPERTY_USAGE_EDITOR</span> <span class="o">|</span> <span class="n">PROPERTY_USAGE_STORAGE</span> <span class="o">|</span> <span class="p">(</span><span class="n">has_def_value</span> <span class="o">?</span> <span class="p">(</span><span class="n">PROPERTY_USAGE_CHECKABLE</span> <span class="o">|</span> <span class="n">PROPERTY_USAGE_CHECKED</span><span class="p">)</span> <span class="o">:</span> <span class="n">PROPERTY_USAGE_NONE</span><span class="p">);</span>
+<a name="line-372"></a>		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a name="line-373"></a>			<span class="n">pi</span><span class="p">.</span><span class="n">usage</span> <span class="o">=</span> <span class="n">PROPERTY_USAGE_EDITOR</span> <span class="o">|</span> <span class="p">(</span><span class="n">has_def_value</span> <span class="o">?</span> <span class="nl">PROPERTY_USAGE_CHECKABLE</span> <span class="p">:</span> <span class="n">PROPERTY_USAGE_NONE</span><span class="p">);</span> <span class="c1">//do not save if not changed</span>
+<a name="line-374"></a>		<span class="p">}</span>
+<a name="line-375"></a>
+<a name="line-376"></a>		<span class="n">pi</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;instance_shader_parameters/&quot;</span> <span class="o">+</span> <span class="n">pi</span><span class="p">.</span><span class="n">name</span><span class="p">;</span>
+<a name="line-377"></a>		<span class="n">p_list</span><span class="o">-&gt;</span><span class="n">push_back</span><span class="p">(</span><span class="n">pi</span><span class="p">);</span>
+<a name="line-378"></a>	<span class="p">}</span>
+<a name="line-379"></a><span class="p">}</span>
+<a name="line-380"></a>
+<a name="line-381"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_cast_shadows_setting</span><span class="p">(</span><span class="n">ShadowCastingSetting</span> <span class="n">p_shadow_casting_setting</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-382"></a>	<span class="n">shadow_casting_setting</span> <span class="o">=</span> <span class="n">p_shadow_casting_setting</span><span class="p">;</span>
+<a name="line-383"></a>
+<a name="line-384"></a>	<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_cast_shadows_setting</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="p">(</span><span class="n">RS</span><span class="o">::</span><span class="n">ShadowCastingSetting</span><span class="p">)</span><span class="n">p_shadow_casting_setting</span><span class="p">);</span>
+<a name="line-385"></a><span class="p">}</span>
+<a name="line-386"></a>
+<a name="line-387"></a><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">ShadowCastingSetting</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_cast_shadows_setting</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-388"></a>	<span class="k">return</span> <span class="n">shadow_casting_setting</span><span class="p">;</span>
+<a name="line-389"></a><span class="p">}</span>
+<a name="line-390"></a>
+<a name="line-391"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_extra_cull_margin</span><span class="p">(</span><span class="kt">float</span> <span class="n">p_margin</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-392"></a>	<span class="n">ERR_FAIL_COND</span><span class="p">(</span><span class="n">p_margin</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">);</span>
+<a name="line-393"></a>	<span class="n">extra_cull_margin</span> <span class="o">=</span> <span class="n">p_margin</span><span class="p">;</span>
+<a name="line-394"></a>	<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_set_extra_visibility_margin</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">extra_cull_margin</span><span class="p">);</span>
+<a name="line-395"></a><span class="p">}</span>
+<a name="line-396"></a>
+<a name="line-397"></a><span class="kt">float</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_extra_cull_margin</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-398"></a>	<span class="k">return</span> <span class="n">extra_cull_margin</span><span class="p">;</span>
+<a name="line-399"></a><span class="p">}</span>
+<a name="line-400"></a>
+<a name="line-401"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_lod_bias</span><span class="p">(</span><span class="kt">float</span> <span class="n">p_bias</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-402"></a>	<span class="n">ERR_FAIL_COND</span><span class="p">(</span><span class="n">p_bias</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">);</span>
+<a name="line-403"></a>	<span class="n">lod_bias</span> <span class="o">=</span> <span class="n">p_bias</span><span class="p">;</span>
+<a name="line-404"></a>	<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_lod_bias</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">lod_bias</span><span class="p">);</span>
+<a name="line-405"></a><span class="p">}</span>
+<a name="line-406"></a>
+<a name="line-407"></a><span class="kt">float</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_lod_bias</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-408"></a>	<span class="k">return</span> <span class="n">lod_bias</span><span class="p">;</span>
+<a name="line-409"></a><span class="p">}</span>
+<a name="line-410"></a>
+<a name="line-411"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_instance_shader_parameter</span><span class="p">(</span><span class="k">const</span> <span class="n">StringName</span> <span class="o">&amp;</span><span class="n">p_name</span><span class="p">,</span> <span class="k">const</span> <span class="n">Variant</span> <span class="o">&amp;</span><span class="n">p_value</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-412"></a>	<span class="k">if</span> <span class="p">(</span><span class="n">p_value</span><span class="p">.</span><span class="n">get_type</span><span class="p">()</span> <span class="o">==</span> <span class="n">Variant</span><span class="o">::</span><span class="n">NIL</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-413"></a>		<span class="n">Variant</span> <span class="n">def_value</span> <span class="o">=</span> <span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_get_shader_parameter_default_value</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">p_name</span><span class="p">);</span>
+<a name="line-414"></a>		<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_shader_parameter</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">p_name</span><span class="p">,</span> <span class="n">def_value</span><span class="p">);</span>
+<a name="line-415"></a>		<span class="n">instance_shader_parameters</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">p_value</span><span class="p">);</span>
+<a name="line-416"></a>	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a name="line-417"></a>		<span class="n">instance_shader_parameters</span><span class="p">[</span><span class="n">p_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_value</span><span class="p">;</span>
+<a name="line-418"></a>		<span class="k">if</span> <span class="p">(</span><span class="n">p_value</span><span class="p">.</span><span class="n">get_type</span><span class="p">()</span> <span class="o">==</span> <span class="n">Variant</span><span class="o">::</span><span class="n">OBJECT</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-419"></a>			<span class="n">RID</span> <span class="n">tex_id</span> <span class="o">=</span> <span class="n">p_value</span><span class="p">;</span>
+<a name="line-420"></a>			<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_shader_parameter</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">p_name</span><span class="p">,</span> <span class="n">tex_id</span><span class="p">);</span>
+<a name="line-421"></a>		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<a name="line-422"></a>			<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_shader_parameter</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">p_name</span><span class="p">,</span> <span class="n">p_value</span><span class="p">);</span>
+<a name="line-423"></a>		<span class="p">}</span>
+<a name="line-424"></a>	<span class="p">}</span>
+<a name="line-425"></a><span class="p">}</span>
+<a name="line-426"></a>
+<a name="line-427"></a><span class="n">Variant</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_instance_shader_parameter</span><span class="p">(</span><span class="k">const</span> <span class="n">StringName</span> <span class="o">&amp;</span><span class="n">p_name</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-428"></a>	<span class="k">return</span> <span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_get_shader_parameter</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">p_name</span><span class="p">);</span>
+<a name="line-429"></a><span class="p">}</span>
+<a name="line-430"></a>
+<a name="line-431"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_custom_aabb</span><span class="p">(</span><span class="n">AABB</span> <span class="n">p_aabb</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-432"></a>	<span class="k">if</span> <span class="p">(</span><span class="n">p_aabb</span> <span class="o">==</span> <span class="n">custom_aabb</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-433"></a>		<span class="k">return</span><span class="p">;</span>
+<a name="line-434"></a>	<span class="p">}</span>
+<a name="line-435"></a>	<span class="n">custom_aabb</span> <span class="o">=</span> <span class="n">p_aabb</span><span class="p">;</span>
+<a name="line-436"></a>	<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_set_custom_aabb</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">custom_aabb</span><span class="p">);</span>
+<a name="line-437"></a>	<span class="n">update_gizmos</span><span class="p">();</span>
+<a name="line-438"></a><span class="p">}</span>
+<a name="line-439"></a>
+<a name="line-440"></a><span class="n">AABB</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_custom_aabb</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-441"></a>	<span class="k">return</span> <span class="n">custom_aabb</span><span class="p">;</span>
+<a name="line-442"></a><span class="p">}</span>
+<a name="line-443"></a>
+<a name="line-444"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_lightmap_texel_scale</span><span class="p">(</span><span class="kt">float</span> <span class="n">p_scale</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-445"></a>	<span class="n">lightmap_texel_scale</span> <span class="o">=</span> <span class="n">p_scale</span><span class="p">;</span>
+<a name="line-446"></a><span class="p">}</span>
+<a name="line-447"></a>
+<a name="line-448"></a><span class="kt">float</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_lightmap_texel_scale</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-449"></a>	<span class="k">return</span> <span class="n">lightmap_texel_scale</span><span class="p">;</span>
+<a name="line-450"></a><span class="p">}</span>
+<a name="line-451"></a>
+<a name="line-452"></a><span class="cp">#ifndef DISABLE_DEPRECATED</span>
+<a name="line-453"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_lightmap_scale</span><span class="p">(</span><span class="n">LightmapScale</span> <span class="n">p_scale</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-454"></a>	<span class="n">ERR_FAIL_INDEX</span><span class="p">(</span><span class="n">p_scale</span><span class="p">,</span> <span class="n">LIGHTMAP_SCALE_MAX</span><span class="p">);</span>
+<a name="line-455"></a>	<span class="k">switch</span> <span class="p">(</span><span class="n">p_scale</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-456"></a>		<span class="k">case</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="nl">LIGHTMAP_SCALE_1X</span><span class="p">:</span>
+<a name="line-457"></a>			<span class="n">lightmap_texel_scale</span> <span class="o">=</span> <span class="mf">1.0f</span><span class="p">;</span>
+<a name="line-458"></a>			<span class="k">break</span><span class="p">;</span>
+<a name="line-459"></a>		<span class="k">case</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="nl">LIGHTMAP_SCALE_2X</span><span class="p">:</span>
+<a name="line-460"></a>			<span class="n">lightmap_texel_scale</span> <span class="o">=</span> <span class="mf">2.0f</span><span class="p">;</span>
+<a name="line-461"></a>			<span class="k">break</span><span class="p">;</span>
+<a name="line-462"></a>		<span class="k">case</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="nl">LIGHTMAP_SCALE_4X</span><span class="p">:</span>
+<a name="line-463"></a>			<span class="n">lightmap_texel_scale</span> <span class="o">=</span> <span class="mf">4.0f</span><span class="p">;</span>
+<a name="line-464"></a>			<span class="k">break</span><span class="p">;</span>
+<a name="line-465"></a>		<span class="k">case</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="nl">LIGHTMAP_SCALE_8X</span><span class="p">:</span>
+<a name="line-466"></a>			<span class="n">lightmap_texel_scale</span> <span class="o">=</span> <span class="mf">8.0f</span><span class="p">;</span>
+<a name="line-467"></a>			<span class="k">break</span><span class="p">;</span>
+<a name="line-468"></a>		<span class="k">case</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="nl">LIGHTMAP_SCALE_MAX</span><span class="p">:</span>
+<a name="line-469"></a>			<span class="k">break</span><span class="p">;</span> <span class="c1">// Can&#39;t happen, but silences warning.</span>
+<a name="line-470"></a>	<span class="p">}</span>
+<a name="line-471"></a><span class="p">}</span>
+<a name="line-472"></a>
+<a name="line-473"></a><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">LightmapScale</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_lightmap_scale</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-474"></a>	<span class="c1">// Return closest approximation.</span>
+<a name="line-475"></a>	<span class="k">if</span> <span class="p">(</span><span class="n">lightmap_texel_scale</span> <span class="o">&lt;</span> <span class="mf">1.5f</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-476"></a>		<span class="k">return</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">LIGHTMAP_SCALE_1X</span><span class="p">;</span>
+<a name="line-477"></a>	<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">lightmap_texel_scale</span> <span class="o">&lt;</span> <span class="mf">3.0f</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-478"></a>		<span class="k">return</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">LIGHTMAP_SCALE_2X</span><span class="p">;</span>
+<a name="line-479"></a>	<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">lightmap_texel_scale</span> <span class="o">&lt;</span> <span class="mf">6.0f</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-480"></a>		<span class="k">return</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">LIGHTMAP_SCALE_4X</span><span class="p">;</span>
+<a name="line-481"></a>	<span class="p">}</span>
+<a name="line-482"></a>
+<a name="line-483"></a>	<span class="k">return</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">LIGHTMAP_SCALE_8X</span><span class="p">;</span>
+<a name="line-484"></a><span class="p">}</span>
+<a name="line-485"></a><span class="cp">#endif </span><span class="c1">// DISABLE_DEPRECATED</span>
+<a name="line-486"></a>
+<a name="line-487"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_gi_mode</span><span class="p">(</span><span class="n">GIMode</span> <span class="n">p_mode</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-488"></a>	<span class="k">switch</span> <span class="p">(</span><span class="n">p_mode</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-489"></a>		<span class="k">case</span> <span class="nl">GI_MODE_DISABLED</span><span class="p">:</span> <span class="p">{</span>
+<a name="line-490"></a>			<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_flag</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">RS</span><span class="o">::</span><span class="n">INSTANCE_FLAG_USE_BAKED_LIGHT</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+<a name="line-491"></a>			<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_flag</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">RS</span><span class="o">::</span><span class="n">INSTANCE_FLAG_USE_DYNAMIC_GI</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+<a name="line-492"></a>		<span class="p">}</span> <span class="k">break</span><span class="p">;</span>
+<a name="line-493"></a>		<span class="k">case</span> <span class="nl">GI_MODE_STATIC</span><span class="p">:</span> <span class="p">{</span>
+<a name="line-494"></a>			<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_flag</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">RS</span><span class="o">::</span><span class="n">INSTANCE_FLAG_USE_BAKED_LIGHT</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+<a name="line-495"></a>			<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_flag</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">RS</span><span class="o">::</span><span class="n">INSTANCE_FLAG_USE_DYNAMIC_GI</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+<a name="line-496"></a>
+<a name="line-497"></a>		<span class="p">}</span> <span class="k">break</span><span class="p">;</span>
+<a name="line-498"></a>		<span class="k">case</span> <span class="nl">GI_MODE_DYNAMIC</span><span class="p">:</span> <span class="p">{</span>
+<a name="line-499"></a>			<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_flag</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">RS</span><span class="o">::</span><span class="n">INSTANCE_FLAG_USE_BAKED_LIGHT</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+<a name="line-500"></a>			<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_flag</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">RS</span><span class="o">::</span><span class="n">INSTANCE_FLAG_USE_DYNAMIC_GI</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+<a name="line-501"></a>		<span class="p">}</span> <span class="k">break</span><span class="p">;</span>
+<a name="line-502"></a>	<span class="p">}</span>
+<a name="line-503"></a>
+<a name="line-504"></a>	<span class="n">gi_mode</span> <span class="o">=</span> <span class="n">p_mode</span><span class="p">;</span>
+<a name="line-505"></a><span class="p">}</span>
+<a name="line-506"></a>
+<a name="line-507"></a><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">GIMode</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_gi_mode</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-508"></a>	<span class="k">return</span> <span class="n">gi_mode</span><span class="p">;</span>
+<a name="line-509"></a><span class="p">}</span>
+<a name="line-510"></a>
+<a name="line-511"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_ignore_occlusion_culling</span><span class="p">(</span><span class="kt">bool</span> <span class="n">p_enabled</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-512"></a>	<span class="n">ignore_occlusion_culling</span> <span class="o">=</span> <span class="n">p_enabled</span><span class="p">;</span>
+<a name="line-513"></a>	<span class="n">RS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">instance_geometry_set_flag</span><span class="p">(</span><span class="n">get_instance</span><span class="p">(),</span> <span class="n">RS</span><span class="o">::</span><span class="n">INSTANCE_FLAG_IGNORE_OCCLUSION_CULLING</span><span class="p">,</span> <span class="n">ignore_occlusion_culling</span><span class="p">);</span>
+<a name="line-514"></a><span class="p">}</span>
+<a name="line-515"></a>
+<a name="line-516"></a><span class="kt">bool</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">is_ignoring_occlusion_culling</span><span class="p">()</span> <span class="p">{</span>
+<a name="line-517"></a>	<span class="k">return</span> <span class="n">ignore_occlusion_culling</span><span class="p">;</span>
+<a name="line-518"></a><span class="p">}</span>
+<a name="line-519"></a>
+<a name="line-520"></a><span class="n">Ref</span><span class="o">&lt;</span><span class="n">TriangleMesh</span><span class="o">&gt;</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">generate_triangle_mesh</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-521"></a>	<span class="k">return</span> <span class="n">Ref</span><span class="o">&lt;</span><span class="n">TriangleMesh</span><span class="o">&gt;</span><span class="p">();</span>
+<a name="line-522"></a><span class="p">}</span>
+<a name="line-523"></a>
+<a name="line-524"></a><span class="n">PackedStringArray</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_configuration_warnings</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-525"></a>	<span class="n">PackedStringArray</span> <span class="n">warnings</span> <span class="o">=</span> <span class="n">VisualInstance3D</span><span class="o">::</span><span class="n">get_configuration_warnings</span><span class="p">();</span>
+<a name="line-526"></a>
+<a name="line-527"></a>	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">Math</span><span class="o">::</span><span class="n">is_zero_approx</span><span class="p">(</span><span class="n">visibility_range_end</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">visibility_range_end</span> <span class="o">&lt;=</span> <span class="n">visibility_range_begin</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-528"></a>		<span class="n">warnings</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">RTR</span><span class="p">(</span><span class="s">&quot;The GeometryInstance3D visibility range&#39;s End distance is set to a non-zero value, but is lower than the Begin distance.</span><span class="se">\n</span><span class="s">This means the GeometryInstance3D will never be visible.</span><span class="se">\n</span><span class="s">To resolve this, set the End distance to 0 or to a value greater than the Begin distance.&quot;</span><span class="p">));</span>
+<a name="line-529"></a>	<span class="p">}</span>
+<a name="line-530"></a>
+<a name="line-531"></a>	<span class="k">if</span> <span class="p">((</span><span class="n">visibility_range_fade_mode</span> <span class="o">==</span> <span class="n">VISIBILITY_RANGE_FADE_SELF</span> <span class="o">||</span> <span class="n">visibility_range_fade_mode</span> <span class="o">==</span> <span class="n">VISIBILITY_RANGE_FADE_DEPENDENCIES</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">Math</span><span class="o">::</span><span class="n">is_zero_approx</span><span class="p">(</span><span class="n">visibility_range_begin</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">Math</span><span class="o">::</span><span class="n">is_zero_approx</span><span class="p">(</span><span class="n">visibility_range_begin_margin</span><span class="p">))</span> <span class="p">{</span>
+<a name="line-532"></a>		<span class="n">warnings</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">RTR</span><span class="p">(</span><span class="s">&quot;The GeometryInstance3D is configured to fade in smoothly over distance, but the fade transition distance is set to 0.</span><span class="se">\n</span><span class="s">To resolve this, increase Visibility Range Begin Margin above 0.&quot;</span><span class="p">));</span>
+<a name="line-533"></a>	<span class="p">}</span>
+<a name="line-534"></a>
+<a name="line-535"></a>	<span class="k">if</span> <span class="p">((</span><span class="n">visibility_range_fade_mode</span> <span class="o">==</span> <span class="n">VISIBILITY_RANGE_FADE_SELF</span> <span class="o">||</span> <span class="n">visibility_range_fade_mode</span> <span class="o">==</span> <span class="n">VISIBILITY_RANGE_FADE_DEPENDENCIES</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">Math</span><span class="o">::</span><span class="n">is_zero_approx</span><span class="p">(</span><span class="n">visibility_range_end</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">Math</span><span class="o">::</span><span class="n">is_zero_approx</span><span class="p">(</span><span class="n">visibility_range_end_margin</span><span class="p">))</span> <span class="p">{</span>
+<a name="line-536"></a>		<span class="n">warnings</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">RTR</span><span class="p">(</span><span class="s">&quot;The GeometryInstance3D is configured to fade out smoothly over distance, but the fade transition distance is set to 0.</span><span class="se">\n</span><span class="s">To resolve this, increase Visibility Range End Margin above 0.&quot;</span><span class="p">));</span>
+<a name="line-537"></a>	<span class="p">}</span>
+<a name="line-538"></a>
+<a name="line-539"></a>	<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">Math</span><span class="o">::</span><span class="n">is_zero_approx</span><span class="p">(</span><span class="n">transparency</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">OS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">get_current_rendering_method</span><span class="p">()</span> <span class="o">!=</span> <span class="s">&quot;forward_plus&quot;</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-540"></a>		<span class="n">warnings</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">RTR</span><span class="p">(</span><span class="s">&quot;GeometryInstance3D transparency is only available when using the Forward+ rendering method.&quot;</span><span class="p">));</span>
+<a name="line-541"></a>	<span class="p">}</span>
+<a name="line-542"></a>
+<a name="line-543"></a>	<span class="k">if</span> <span class="p">((</span><span class="n">visibility_range_fade_mode</span> <span class="o">==</span> <span class="n">VISIBILITY_RANGE_FADE_SELF</span> <span class="o">||</span> <span class="n">visibility_range_fade_mode</span> <span class="o">==</span> <span class="n">VISIBILITY_RANGE_FADE_DEPENDENCIES</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">OS</span><span class="o">::</span><span class="n">get_singleton</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">get_current_rendering_method</span><span class="p">()</span> <span class="o">!=</span> <span class="s">&quot;forward_plus&quot;</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-544"></a>		<span class="n">warnings</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">RTR</span><span class="p">(</span><span class="s">&quot;GeometryInstance3D visibility range transparency fade is only available when using the Forward+ rendering method.&quot;</span><span class="p">));</span>
+<a name="line-545"></a>	<span class="p">}</span>
+<a name="line-546"></a>
+<a name="line-547"></a>	<span class="k">return</span> <span class="n">warnings</span><span class="p">;</span>
+<a name="line-548"></a><span class="p">}</span>
+<a name="line-549"></a>
+<a name="line-550"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">_validate_property</span><span class="p">(</span><span class="n">PropertyInfo</span> <span class="o">&amp;</span><span class="n">p_property</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+<a name="line-551"></a>	<span class="k">if</span> <span class="p">(</span><span class="n">p_property</span><span class="p">.</span><span class="n">name</span> <span class="o">==</span> <span class="s">&quot;sorting_offset&quot;</span> <span class="o">||</span> <span class="n">p_property</span><span class="p">.</span><span class="n">name</span> <span class="o">==</span> <span class="s">&quot;sorting_use_aabb_center&quot;</span><span class="p">)</span> <span class="p">{</span>
+<a name="line-552"></a>		<span class="n">p_property</span><span class="p">.</span><span class="n">usage</span> <span class="o">=</span> <span class="n">PROPERTY_USAGE_DEFAULT</span><span class="p">;</span>
+<a name="line-553"></a>	<span class="p">}</span>
+<a name="line-554"></a><span class="p">}</span>
+<a name="line-555"></a>
+<a name="line-556"></a><span class="kt">void</span> <span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">_bind_methods</span><span class="p">()</span> <span class="p">{</span>
+<a name="line-557"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_material_override&quot;</span><span class="p">,</span> <span class="s">&quot;material&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_material_override</span><span class="p">);</span>
+<a name="line-558"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_material_override&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_material_override</span><span class="p">);</span>
+<a name="line-559"></a>
+<a name="line-560"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_material_overlay&quot;</span><span class="p">,</span> <span class="s">&quot;material&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_material_overlay</span><span class="p">);</span>
+<a name="line-561"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_material_overlay&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_material_overlay</span><span class="p">);</span>
+<a name="line-562"></a>
+<a name="line-563"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_cast_shadows_setting&quot;</span><span class="p">,</span> <span class="s">&quot;shadow_casting_setting&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_cast_shadows_setting</span><span class="p">);</span>
+<a name="line-564"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_cast_shadows_setting&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_cast_shadows_setting</span><span class="p">);</span>
+<a name="line-565"></a>
+<a name="line-566"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_lod_bias&quot;</span><span class="p">,</span> <span class="s">&quot;bias&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_lod_bias</span><span class="p">);</span>
+<a name="line-567"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_lod_bias&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_lod_bias</span><span class="p">);</span>
+<a name="line-568"></a>
+<a name="line-569"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_transparency&quot;</span><span class="p">,</span> <span class="s">&quot;transparency&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_transparency</span><span class="p">);</span>
+<a name="line-570"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_transparency&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_transparency</span><span class="p">);</span>
+<a name="line-571"></a>
+<a name="line-572"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_visibility_range_end_margin&quot;</span><span class="p">,</span> <span class="s">&quot;distance&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_visibility_range_end_margin</span><span class="p">);</span>
+<a name="line-573"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_visibility_range_end_margin&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_visibility_range_end_margin</span><span class="p">);</span>
+<a name="line-574"></a>
+<a name="line-575"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_visibility_range_end&quot;</span><span class="p">,</span> <span class="s">&quot;distance&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_visibility_range_end</span><span class="p">);</span>
+<a name="line-576"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_visibility_range_end&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_visibility_range_end</span><span class="p">);</span>
+<a name="line-577"></a>
+<a name="line-578"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_visibility_range_begin_margin&quot;</span><span class="p">,</span> <span class="s">&quot;distance&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_visibility_range_begin_margin</span><span class="p">);</span>
+<a name="line-579"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_visibility_range_begin_margin&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_visibility_range_begin_margin</span><span class="p">);</span>
+<a name="line-580"></a>
+<a name="line-581"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_visibility_range_begin&quot;</span><span class="p">,</span> <span class="s">&quot;distance&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_visibility_range_begin</span><span class="p">);</span>
+<a name="line-582"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_visibility_range_begin&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_visibility_range_begin</span><span class="p">);</span>
+<a name="line-583"></a>
+<a name="line-584"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_visibility_range_fade_mode&quot;</span><span class="p">,</span> <span class="s">&quot;mode&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_visibility_range_fade_mode</span><span class="p">);</span>
+<a name="line-585"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_visibility_range_fade_mode&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_visibility_range_fade_mode</span><span class="p">);</span>
+<a name="line-586"></a>
+<a name="line-587"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_instance_shader_parameter&quot;</span><span class="p">,</span> <span class="s">&quot;name&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_instance_shader_parameter</span><span class="p">);</span>
+<a name="line-588"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_instance_shader_parameter&quot;</span><span class="p">,</span> <span class="s">&quot;name&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_instance_shader_parameter</span><span class="p">);</span>
+<a name="line-589"></a>
+<a name="line-590"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_extra_cull_margin&quot;</span><span class="p">,</span> <span class="s">&quot;margin&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_extra_cull_margin</span><span class="p">);</span>
+<a name="line-591"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_extra_cull_margin&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_extra_cull_margin</span><span class="p">);</span>
+<a name="line-592"></a>
+<a name="line-593"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_lightmap_texel_scale&quot;</span><span class="p">,</span> <span class="s">&quot;scale&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_lightmap_texel_scale</span><span class="p">);</span>
+<a name="line-594"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_lightmap_texel_scale&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_lightmap_texel_scale</span><span class="p">);</span>
+<a name="line-595"></a>
+<a name="line-596"></a><span class="cp">#ifndef DISABLE_DEPRECATED</span>
+<a name="line-597"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_lightmap_scale&quot;</span><span class="p">,</span> <span class="s">&quot;scale&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_lightmap_scale</span><span class="p">);</span>
+<a name="line-598"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_lightmap_scale&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_lightmap_scale</span><span class="p">);</span>
+<a name="line-599"></a><span class="cp">#endif </span><span class="c1">// DISABLE_DEPRECATED</span>
+<a name="line-600"></a>
+<a name="line-601"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_gi_mode&quot;</span><span class="p">,</span> <span class="s">&quot;mode&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_gi_mode</span><span class="p">);</span>
+<a name="line-602"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_gi_mode&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_gi_mode</span><span class="p">);</span>
+<a name="line-603"></a>
+<a name="line-604"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_ignore_occlusion_culling&quot;</span><span class="p">,</span> <span class="s">&quot;ignore_culling&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_ignore_occlusion_culling</span><span class="p">);</span>
+<a name="line-605"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;is_ignoring_occlusion_culling&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">is_ignoring_occlusion_culling</span><span class="p">);</span>
+<a name="line-606"></a>
+<a name="line-607"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;set_custom_aabb&quot;</span><span class="p">,</span> <span class="s">&quot;aabb&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">set_custom_aabb</span><span class="p">);</span>
+<a name="line-608"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_custom_aabb&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_custom_aabb</span><span class="p">);</span>
+<a name="line-609"></a>
+<a name="line-610"></a>	<span class="n">ClassDB</span><span class="o">::</span><span class="n">bind_method</span><span class="p">(</span><span class="n">D_METHOD</span><span class="p">(</span><span class="s">&quot;get_aabb&quot;</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">get_aabb</span><span class="p">);</span>
+<a name="line-611"></a>
+<a name="line-612"></a>	<span class="n">ADD_GROUP</span><span class="p">(</span><span class="s">&quot;Geometry&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
+<a name="line-613"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">OBJECT</span><span class="p">,</span> <span class="s">&quot;material_override&quot;</span><span class="p">,</span> <span class="n">PROPERTY_HINT_RESOURCE_TYPE</span><span class="p">,</span> <span class="s">&quot;BaseMaterial3D,ShaderMaterial&quot;</span><span class="p">,</span> <span class="n">PROPERTY_USAGE_DEFAULT</span><span class="p">),</span> <span class="s">&quot;set_material_override&quot;</span><span class="p">,</span> <span class="s">&quot;get_material_override&quot;</span><span class="p">);</span>
+<a name="line-614"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">OBJECT</span><span class="p">,</span> <span class="s">&quot;material_overlay&quot;</span><span class="p">,</span> <span class="n">PROPERTY_HINT_RESOURCE_TYPE</span><span class="p">,</span> <span class="s">&quot;BaseMaterial3D,ShaderMaterial&quot;</span><span class="p">,</span> <span class="n">PROPERTY_USAGE_DEFAULT</span><span class="p">),</span> <span class="s">&quot;set_material_overlay&quot;</span><span class="p">,</span> <span class="s">&quot;get_material_overlay&quot;</span><span class="p">);</span>
+<a name="line-615"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">FLOAT</span><span class="p">,</span> <span class="s">&quot;transparency&quot;</span><span class="p">,</span> <span class="n">PROPERTY_HINT_RANGE</span><span class="p">,</span> <span class="s">&quot;0.0,1.0,0.01&quot;</span><span class="p">),</span> <span class="s">&quot;set_transparency&quot;</span><span class="p">,</span> <span class="s">&quot;get_transparency&quot;</span><span class="p">);</span>
+<a name="line-616"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">INT</span><span class="p">,</span> <span class="s">&quot;cast_shadow&quot;</span><span class="p">,</span> <span class="n">PROPERTY_HINT_ENUM</span><span class="p">,</span> <span class="s">&quot;Off,On,Double-Sided,Shadows Only&quot;</span><span class="p">),</span> <span class="s">&quot;set_cast_shadows_setting&quot;</span><span class="p">,</span> <span class="s">&quot;get_cast_shadows_setting&quot;</span><span class="p">);</span>
+<a name="line-617"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">FLOAT</span><span class="p">,</span> <span class="s">&quot;extra_cull_margin&quot;</span><span class="p">,</span> <span class="n">PROPERTY_HINT_RANGE</span><span class="p">,</span> <span class="s">&quot;0,16384,0.01,suffix:m&quot;</span><span class="p">),</span> <span class="s">&quot;set_extra_cull_margin&quot;</span><span class="p">,</span> <span class="s">&quot;get_extra_cull_margin&quot;</span><span class="p">);</span>
+<a name="line-618"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">AABB</span><span class="p">,</span> <span class="s">&quot;custom_aabb&quot;</span><span class="p">,</span> <span class="n">PROPERTY_HINT_NONE</span><span class="p">,</span> <span class="s">&quot;suffix:m&quot;</span><span class="p">),</span> <span class="s">&quot;set_custom_aabb&quot;</span><span class="p">,</span> <span class="s">&quot;get_custom_aabb&quot;</span><span class="p">);</span>
+<a name="line-619"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">FLOAT</span><span class="p">,</span> <span class="s">&quot;lod_bias&quot;</span><span class="p">,</span> <span class="n">PROPERTY_HINT_RANGE</span><span class="p">,</span> <span class="s">&quot;0.001,128,0.001&quot;</span><span class="p">),</span> <span class="s">&quot;set_lod_bias&quot;</span><span class="p">,</span> <span class="s">&quot;get_lod_bias&quot;</span><span class="p">);</span>
+<a name="line-620"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">BOOL</span><span class="p">,</span> <span class="s">&quot;ignore_occlusion_culling&quot;</span><span class="p">),</span> <span class="s">&quot;set_ignore_occlusion_culling&quot;</span><span class="p">,</span> <span class="s">&quot;is_ignoring_occlusion_culling&quot;</span><span class="p">);</span>
+<a name="line-621"></a>
+<a name="line-622"></a>	<span class="n">ADD_GROUP</span><span class="p">(</span><span class="s">&quot;Global Illumination&quot;</span><span class="p">,</span> <span class="s">&quot;gi_&quot;</span><span class="p">);</span>
+<a name="line-623"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">INT</span><span class="p">,</span> <span class="s">&quot;gi_mode&quot;</span><span class="p">,</span> <span class="n">PROPERTY_HINT_ENUM</span><span class="p">,</span> <span class="s">&quot;Disabled,Static,Dynamic&quot;</span><span class="p">),</span> <span class="s">&quot;set_gi_mode&quot;</span><span class="p">,</span> <span class="s">&quot;get_gi_mode&quot;</span><span class="p">);</span>
+<a name="line-624"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">FLOAT</span><span class="p">,</span> <span class="s">&quot;gi_lightmap_texel_scale&quot;</span><span class="p">,</span> <span class="n">PROPERTY_HINT_RANGE</span><span class="p">,</span> <span class="s">&quot;0.01,10,0.0001,or_greater&quot;</span><span class="p">),</span> <span class="s">&quot;set_lightmap_texel_scale&quot;</span><span class="p">,</span> <span class="s">&quot;get_lightmap_texel_scale&quot;</span><span class="p">);</span>
+<a name="line-625"></a><span class="cp">#ifndef DISABLE_DEPRECATED</span>
+<a name="line-626"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">INT</span><span class="p">,</span> <span class="s">&quot;gi_lightmap_scale&quot;</span><span class="p">,</span> <span class="n">PROPERTY_HINT_ENUM</span><span class="p">,</span> <span class="n">String</span><span class="o">::</span><span class="n">utf8</span><span class="p">(</span><span class="s">&quot;1×,2×,4×,8×&quot;</span><span class="p">),</span> <span class="n">PROPERTY_USAGE_NONE</span><span class="p">),</span> <span class="s">&quot;set_lightmap_scale&quot;</span><span class="p">,</span> <span class="s">&quot;get_lightmap_scale&quot;</span><span class="p">);</span>
+<a name="line-627"></a><span class="cp">#endif </span><span class="c1">// DISABLE_DEPRECATED</span>
+<a name="line-628"></a>
+<a name="line-629"></a>	<span class="n">ADD_GROUP</span><span class="p">(</span><span class="s">&quot;Visibility Range&quot;</span><span class="p">,</span> <span class="s">&quot;visibility_range_&quot;</span><span class="p">);</span>
+<a name="line-630"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">FLOAT</span><span class="p">,</span> <span class="s">&quot;visibility_range_begin&quot;</span><span class="p">,</span> <span class="n">PROPERTY_HINT_RANGE</span><span class="p">,</span> <span class="s">&quot;0.0,4096.0,0.01,or_greater,suffix:m&quot;</span><span class="p">),</span> <span class="s">&quot;set_visibility_range_begin&quot;</span><span class="p">,</span> <span class="s">&quot;get_visibility_range_begin&quot;</span><span class="p">);</span>
+<a name="line-631"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">FLOAT</span><span class="p">,</span> <span class="s">&quot;visibility_range_begin_margin&quot;</span><span class="p">,</span> <span class="n">PROPERTY_HINT_RANGE</span><span class="p">,</span> <span class="s">&quot;0.0,4096.0,0.01,or_greater,suffix:m&quot;</span><span class="p">),</span> <span class="s">&quot;set_visibility_range_begin_margin&quot;</span><span class="p">,</span> <span class="s">&quot;get_visibility_range_begin_margin&quot;</span><span class="p">);</span>
+<a name="line-632"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">FLOAT</span><span class="p">,</span> <span class="s">&quot;visibility_range_end&quot;</span><span class="p">,</span> <span class="n">PROPERTY_HINT_RANGE</span><span class="p">,</span> <span class="s">&quot;0.0,4096.0,0.01,or_greater,suffix:m&quot;</span><span class="p">),</span> <span class="s">&quot;set_visibility_range_end&quot;</span><span class="p">,</span> <span class="s">&quot;get_visibility_range_end&quot;</span><span class="p">);</span>
+<a name="line-633"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">FLOAT</span><span class="p">,</span> <span class="s">&quot;visibility_range_end_margin&quot;</span><span class="p">,</span> <span class="n">PROPERTY_HINT_RANGE</span><span class="p">,</span> <span class="s">&quot;0.0,4096.0,0.01,or_greater,suffix:m&quot;</span><span class="p">),</span> <span class="s">&quot;set_visibility_range_end_margin&quot;</span><span class="p">,</span> <span class="s">&quot;get_visibility_range_end_margin&quot;</span><span class="p">);</span>
+<a name="line-634"></a>	<span class="n">ADD_PROPERTY</span><span class="p">(</span><span class="n">PropertyInfo</span><span class="p">(</span><span class="n">Variant</span><span class="o">::</span><span class="n">INT</span><span class="p">,</span> <span class="s">&quot;visibility_range_fade_mode&quot;</span><span class="p">,</span> <span class="n">PROPERTY_HINT_ENUM</span><span class="p">,</span> <span class="s">&quot;Disabled,Self,Dependencies&quot;</span><span class="p">),</span> <span class="s">&quot;set_visibility_range_fade_mode&quot;</span><span class="p">,</span> <span class="s">&quot;get_visibility_range_fade_mode&quot;</span><span class="p">);</span>
+<a name="line-635"></a>
+<a name="line-636"></a>	<span class="n">BIND_ENUM_CONSTANT</span><span class="p">(</span><span class="n">SHADOW_CASTING_SETTING_OFF</span><span class="p">);</span>
+<a name="line-637"></a>	<span class="n">BIND_ENUM_CONSTANT</span><span class="p">(</span><span class="n">SHADOW_CASTING_SETTING_ON</span><span class="p">);</span>
+<a name="line-638"></a>	<span class="n">BIND_ENUM_CONSTANT</span><span class="p">(</span><span class="n">SHADOW_CASTING_SETTING_DOUBLE_SIDED</span><span class="p">);</span>
+<a name="line-639"></a>	<span class="n">BIND_ENUM_CONSTANT</span><span class="p">(</span><span class="n">SHADOW_CASTING_SETTING_SHADOWS_ONLY</span><span class="p">);</span>
+<a name="line-640"></a>
+<a name="line-641"></a>	<span class="n">BIND_ENUM_CONSTANT</span><span class="p">(</span><span class="n">GI_MODE_DISABLED</span><span class="p">);</span>
+<a name="line-642"></a>	<span class="n">BIND_ENUM_CONSTANT</span><span class="p">(</span><span class="n">GI_MODE_STATIC</span><span class="p">);</span>
+<a name="line-643"></a>	<span class="n">BIND_ENUM_CONSTANT</span><span class="p">(</span><span class="n">GI_MODE_DYNAMIC</span><span class="p">);</span>
+<a name="line-644"></a>
+<a name="line-645"></a>	<span class="n">BIND_ENUM_CONSTANT</span><span class="p">(</span><span class="n">LIGHTMAP_SCALE_1X</span><span class="p">);</span>
+<a name="line-646"></a>	<span class="n">BIND_ENUM_CONSTANT</span><span class="p">(</span><span class="n">LIGHTMAP_SCALE_2X</span><span class="p">);</span>
+<a name="line-647"></a>	<span class="n">BIND_ENUM_CONSTANT</span><span class="p">(</span><span class="n">LIGHTMAP_SCALE_4X</span><span class="p">);</span>
+<a name="line-648"></a>	<span class="n">BIND_ENUM_CONSTANT</span><span class="p">(</span><span class="n">LIGHTMAP_SCALE_8X</span><span class="p">);</span>
+<a name="line-649"></a>	<span class="n">BIND_ENUM_CONSTANT</span><span class="p">(</span><span class="n">LIGHTMAP_SCALE_MAX</span><span class="p">);</span>
+<a name="line-650"></a>
+<a name="line-651"></a>	<span class="n">BIND_ENUM_CONSTANT</span><span class="p">(</span><span class="n">VISIBILITY_RANGE_FADE_DISABLED</span><span class="p">);</span>
+<a name="line-652"></a>	<span class="n">BIND_ENUM_CONSTANT</span><span class="p">(</span><span class="n">VISIBILITY_RANGE_FADE_SELF</span><span class="p">);</span>
+<a name="line-653"></a>	<span class="n">BIND_ENUM_CONSTANT</span><span class="p">(</span><span class="n">VISIBILITY_RANGE_FADE_DEPENDENCIES</span><span class="p">);</span>
+<a name="line-654"></a><span class="p">}</span>
+<a name="line-655"></a>
+<a name="line-656"></a><span class="n">GeometryInstance3D</span><span class="o">::</span><span class="n">GeometryInstance3D</span><span class="p">()</span> <span class="p">{</span>
+<a name="line-657"></a><span class="p">}</span>
+<a name="line-658"></a>
+<a name="line-659"></a><span class="n">GeometryInstance3D</span><span class="o">::~</span><span class="n">GeometryInstance3D</span><span class="p">()</span> <span class="p">{</span>
+<a name="line-660"></a>	<span class="k">if</span> <span class="p">(</span><span class="n">material_overlay</span><span class="p">.</span><span class="n">is_valid</span><span class="p">())</span> <span class="p">{</span>
+<a name="line-661"></a>		<span class="n">set_material_overlay</span><span class="p">(</span><span class="n">Ref</span><span class="o">&lt;</span><span class="n">Material</span><span class="o">&gt;</span><span class="p">());</span>
+<a name="line-662"></a>	<span class="p">}</span>
+<a name="line-663"></a>	<span class="k">if</span> <span class="p">(</span><span class="n">material_override</span><span class="p">.</span><span class="n">is_valid</span><span class="p">())</span> <span class="p">{</span>
+<a name="line-664"></a>		<span class="n">set_material_override</span><span class="p">(</span><span class="n">Ref</span><span class="o">&lt;</span><span class="n">Material</span><span class="o">&gt;</span><span class="p">());</span>
+<a name="line-665"></a>	<span class="p">}</span>
+<a name="line-666"></a><span class="p">}</span>
+</pre></div>
+</td></tr></table>
+    </div>
+    <div id="footer" class="footer">
+      <p>
+        Created by Cppcheck 2.7 (<a href="https://cppcheck.sourceforge.io">Sourceforge</a>, <a href="irc://irc.freenode.net/cppcheck">IRC</a>)
+      </p>
+    </div>
+    </div>
+  </body>
+</html>

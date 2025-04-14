@@ -1,0 +1,1236 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cppcheck - HTML report - Godot - branch: 3.x, commit: 9fccb6b2d7fba4373c7b95e467f1ac44b0ff0cda (2025-04-09)</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #ffffff; }
+.highlight .c { color: #888888 } /* Comment */
+.highlight .err { color: #FF0000; background-color: #FFAAAA } /* Error */
+.highlight .k { color: #008800; font-weight: bold } /* Keyword */
+.highlight .o { color: #333333 } /* Operator */
+.highlight .ch { color: #888888 } /* Comment.Hashbang */
+.highlight .cm { color: #888888 } /* Comment.Multiline */
+.highlight .cp { color: #557799 } /* Comment.Preproc */
+.highlight .cpf { color: #888888 } /* Comment.PreprocFile */
+.highlight .c1 { color: #888888 } /* Comment.Single */
+.highlight .cs { color: #cc0000; font-weight: bold } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008800; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008800; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008800; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #003388; font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { color: #008800; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #333399; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #6600EE; font-weight: bold } /* Literal.Number */
+.highlight .s { background-color: #fff0f0 } /* Literal.String */
+.highlight .na { color: #0000CC } /* Name.Attribute */
+.highlight .nb { color: #007020 } /* Name.Builtin */
+.highlight .nc { color: #BB0066; font-weight: bold } /* Name.Class */
+.highlight .no { color: #003366; font-weight: bold } /* Name.Constant */
+.highlight .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+.highlight .ni { color: #880000; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #FF0000; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0066BB; font-weight: bold } /* Name.Function */
+.highlight .nl { color: #997700; font-weight: bold } /* Name.Label */
+.highlight .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #007700 } /* Name.Tag */
+.highlight .nv { color: #996633 } /* Name.Variable */
+.highlight .ow { color: #000000; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #6600EE; font-weight: bold } /* Literal.Number.Bin */
+.highlight .mf { color: #6600EE; font-weight: bold } /* Literal.Number.Float */
+.highlight .mh { color: #005588; font-weight: bold } /* Literal.Number.Hex */
+.highlight .mi { color: #0000DD; font-weight: bold } /* Literal.Number.Integer */
+.highlight .mo { color: #4400EE; font-weight: bold } /* Literal.Number.Oct */
+.highlight .sa { background-color: #fff0f0 } /* Literal.String.Affix */
+.highlight .sb { background-color: #fff0f0 } /* Literal.String.Backtick */
+.highlight .sc { color: #0044DD } /* Literal.String.Char */
+.highlight .dl { background-color: #fff0f0 } /* Literal.String.Delimiter */
+.highlight .sd { color: #DD4422 } /* Literal.String.Doc */
+.highlight .s2 { background-color: #fff0f0 } /* Literal.String.Double */
+.highlight .se { color: #666666; font-weight: bold; background-color: #fff0f0 } /* Literal.String.Escape */
+.highlight .sh { background-color: #fff0f0 } /* Literal.String.Heredoc */
+.highlight .si { background-color: #eeeeee } /* Literal.String.Interpol */
+.highlight .sx { color: #DD2200; background-color: #fff0f0 } /* Literal.String.Other */
+.highlight .sr { color: #000000; background-color: #fff0ff } /* Literal.String.Regex */
+.highlight .s1 { background-color: #fff0f0 } /* Literal.String.Single */
+.highlight .ss { color: #AA6600 } /* Literal.String.Symbol */
+.highlight .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0066BB; font-weight: bold } /* Name.Function.Magic */
+.highlight .vc { color: #336699 } /* Name.Variable.Class */
+.highlight .vg { color: #dd7700; font-weight: bold } /* Name.Variable.Global */
+.highlight .vi { color: #3333BB } /* Name.Variable.Instance */
+.highlight .vm { color: #996633 } /* Name.Variable.Magic */
+.highlight .il { color: #0000DD; font-weight: bold } /* Literal.Number.Integer.Long */
+    </style>
+    <script>
+      function getStyle(el, styleProp) {
+        var y;
+
+        if (el.currentStyle) {
+          y = el.currentStyle[styleProp];
+        } else if (window.getComputedStyle) {
+          y = document.defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
+        }
+
+        return y;
+      }
+
+      function toggle() {
+        var el = this.expandable_content;
+        var mark = this.expandable_marker;
+
+        if (el.style.display === "block") {
+          el.style.display = "none";
+          mark.textContent = "[+]";
+        } else {
+          el.style.display = "block";
+          mark.textContent = "[-]";
+        }
+      }
+
+      function initExpandables() {
+        var elements = document.querySelectorAll(".expandable");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var el = elements[i];
+          var clickable = el.querySelector("span");
+          var marker = clickable.querySelector(".marker");
+          var content = el.querySelector(".content");
+          var width = clickable.clientWidth - parseInt(getStyle(content, "padding-left")) - parseInt(getStyle(content, "padding-right"));
+          content.style.width = width + "px";
+          clickable.expandable_content = content;
+          clickable.expandable_marker = marker;
+          clickable.addEventListener("click", toggle);
+        }
+      }
+
+      function toggleDisplay(cb) {
+        var elements = document.querySelectorAll("." + cb.id);
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("id-filtered", !cb.checked);
+        }
+
+        updateFileRows();
+      }
+
+      function toggleSeverity(cb) {
+        cb.parentElement.classList.toggle("unchecked", !cb.checked);
+        var elements = document.querySelectorAll(".sev_" + cb.id);
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("severity-filtered", !cb.checked);
+        }
+
+        updateFileRows();
+      }
+
+      function toggleTool(cb) {
+        cb.parentElement.classList.toggle("unchecked", !cb.checked);
+
+        var elements;
+        if (cb.id == "clang-tidy")
+            elements = document.querySelectorAll("[class^=clang-tidy-]");
+        else
+            elements = document.querySelectorAll(".issue:not([class^=clang-tidy-])");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("tool-filtered", !cb.checked);
+        }
+
+        updateFileRows();
+      }
+
+      function toggleAll() {
+        var elements = document.querySelectorAll(".idToggle");
+
+        // starting from 1 since 0 is the "toggle all" input
+        for (var i = 1, len = elements.length; i < len; i++) {
+          var changed = elements[i].checked != elements[0].checked;
+          if (changed) {
+            elements[i].checked = elements[0].checked;
+            toggleDisplay(elements[i]);
+          }
+        }
+      }
+
+      function filterFile(filter) {
+        var elements = document.querySelectorAll(".fileEntry");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var visible = elements[i].querySelector("tr").querySelector("td").textContent.toLowerCase().includes(filter.toLowerCase());
+          elements[i].classList.toggle("text-filtered", !visible);
+        }
+      }
+
+      function filterText(text) {
+        filter = text.toLowerCase();
+        var elements = document.querySelectorAll(".issue");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var visible = false;
+          var fields = elements[i].querySelectorAll("td");
+          for (var n = 0, num = fields.length; n < num; n++) {
+            if (fields[n].textContent.toLowerCase().includes(filter)) {
+              visible = true;
+              break;
+            }
+          }
+          elements[i].classList.toggle("text-filtered", !visible);
+        }
+
+        updateFileRows();
+      }
+
+      function updateFileRows(element) {
+        var elements = document.querySelectorAll(".fileEntry");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var visible = elements[i].querySelector(".issue:not(.id-filtered):not(.severity-filtered):not(.tool-filtered):not(.text-filtered)");
+          elements[i].classList.toggle("file-filtered", !visible);
+        }
+      }
+
+      window.addEventListener("load", initExpandables);
+    </script>
+  </head>
+  <body>
+    <div id="wrapper">
+    <div id="header" class="header">
+      <h1>Cppcheck report - Godot - branch: 3.x, commit: 9fccb6b2d7fba4373c7b95e467f1ac44b0ff0cda (2025-04-09): editor/plugins/script_editor_plugin.h</h1>
+
+    </div>
+
+    <div id="menu">
+     <p><a href="index.html">Defects:</a> script_editor_plugin.h</p>
+<a href="122.html#line-467"> noExplicitConstructor 467</a><a href="122.html#line-498"> noExplicitConstructor 498</a>
+    </div>
+    <div id="content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502</pre></div></td><td class="code"><div class="highlight"><pre><span></span><a name="line-1"></a><span class="cm">/**************************************************************************/</span>
+<a name="line-2"></a><span class="cm">/*  script_editor_plugin.h                                                */</span>
+<a name="line-3"></a><span class="cm">/**************************************************************************/</span>
+<a name="line-4"></a><span class="cm">/*                         This file is part of:                          */</span>
+<a name="line-5"></a><span class="cm">/*                             GODOT ENGINE                               */</span>
+<a name="line-6"></a><span class="cm">/*                        https://godotengine.org                         */</span>
+<a name="line-7"></a><span class="cm">/**************************************************************************/</span>
+<a name="line-8"></a><span class="cm">/* Copyright (c) 2014-present Godot Engine contributors (see AUTHORS.md). */</span>
+<a name="line-9"></a><span class="cm">/* Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.                  */</span>
+<a name="line-10"></a><span class="cm">/*                                                                        */</span>
+<a name="line-11"></a><span class="cm">/* Permission is hereby granted, free of charge, to any person obtaining  */</span>
+<a name="line-12"></a><span class="cm">/* a copy of this software and associated documentation files (the        */</span>
+<a name="line-13"></a><span class="cm">/* &quot;Software&quot;), to deal in the Software without restriction, including    */</span>
+<a name="line-14"></a><span class="cm">/* without limitation the rights to use, copy, modify, merge, publish,    */</span>
+<a name="line-15"></a><span class="cm">/* distribute, sublicense, and/or sell copies of the Software, and to     */</span>
+<a name="line-16"></a><span class="cm">/* permit persons to whom the Software is furnished to do so, subject to  */</span>
+<a name="line-17"></a><span class="cm">/* the following conditions:                                              */</span>
+<a name="line-18"></a><span class="cm">/*                                                                        */</span>
+<a name="line-19"></a><span class="cm">/* The above copyright notice and this permission notice shall be         */</span>
+<a name="line-20"></a><span class="cm">/* included in all copies or substantial portions of the Software.        */</span>
+<a name="line-21"></a><span class="cm">/*                                                                        */</span>
+<a name="line-22"></a><span class="cm">/* THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,        */</span>
+<a name="line-23"></a><span class="cm">/* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     */</span>
+<a name="line-24"></a><span class="cm">/* MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. */</span>
+<a name="line-25"></a><span class="cm">/* IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY   */</span>
+<a name="line-26"></a><span class="cm">/* CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,   */</span>
+<a name="line-27"></a><span class="cm">/* TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE      */</span>
+<a name="line-28"></a><span class="cm">/* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                 */</span>
+<a name="line-29"></a><span class="cm">/**************************************************************************/</span>
+<a name="line-30"></a>
+<a name="line-31"></a><span class="cp">#ifndef SCRIPT_EDITOR_PLUGIN_H</span>
+<a name="line-32"></a><span class="cp">#define SCRIPT_EDITOR_PLUGIN_H</span>
+<a name="line-33"></a>
+<a name="line-34"></a><span class="cp">#include</span> <span class="cpf">&quot;core/script_language.h&quot;</span><span class="cp"></span>
+<a name="line-35"></a><span class="cp">#include</span> <span class="cpf">&quot;editor/code_editor.h&quot;</span><span class="cp"></span>
+<a name="line-36"></a><span class="cp">#include</span> <span class="cpf">&quot;editor/editor_help.h&quot;</span><span class="cp"></span>
+<a name="line-37"></a><span class="cp">#include</span> <span class="cpf">&quot;editor/editor_help_search.h&quot;</span><span class="cp"></span>
+<a name="line-38"></a><span class="cp">#include</span> <span class="cpf">&quot;editor/editor_plugin.h&quot;</span><span class="cp"></span>
+<a name="line-39"></a><span class="cp">#include</span> <span class="cpf">&quot;editor/script_create_dialog.h&quot;</span><span class="cp"></span>
+<a name="line-40"></a><span class="cp">#include</span> <span class="cpf">&quot;scene/gui/item_list.h&quot;</span><span class="cp"></span>
+<a name="line-41"></a><span class="cp">#include</span> <span class="cpf">&quot;scene/gui/line_edit.h&quot;</span><span class="cp"></span>
+<a name="line-42"></a><span class="cp">#include</span> <span class="cpf">&quot;scene/gui/menu_button.h&quot;</span><span class="cp"></span>
+<a name="line-43"></a><span class="cp">#include</span> <span class="cpf">&quot;scene/gui/split_container.h&quot;</span><span class="cp"></span>
+<a name="line-44"></a><span class="cp">#include</span> <span class="cpf">&quot;scene/gui/tab_container.h&quot;</span><span class="cp"></span>
+<a name="line-45"></a><span class="cp">#include</span> <span class="cpf">&quot;scene/gui/text_edit.h&quot;</span><span class="cp"></span>
+<a name="line-46"></a><span class="cp">#include</span> <span class="cpf">&quot;scene/gui/tool_button.h&quot;</span><span class="cp"></span>
+<a name="line-47"></a><span class="cp">#include</span> <span class="cpf">&quot;scene/gui/tree.h&quot;</span><span class="cp"></span>
+<a name="line-48"></a><span class="cp">#include</span> <span class="cpf">&quot;scene/main/timer.h&quot;</span><span class="cp"></span>
+<a name="line-49"></a><span class="cp">#include</span> <span class="cpf">&quot;scene/resources/text_file.h&quot;</span><span class="cp"></span>
+<a name="line-50"></a>
+<a name="line-51"></a><span class="n">class</span> <span class="nl">ScriptEditorQuickOpen</span> <span class="p">:</span> <span class="n">public</span> <span class="n">ConfirmationDialog</span> <span class="p">{</span>
+<a name="line-52"></a>	<span class="n">GDCLASS</span><span class="p">(</span><span class="n">ScriptEditorQuickOpen</span><span class="p">,</span> <span class="n">ConfirmationDialog</span><span class="p">);</span>
+<a name="line-53"></a>
+<a name="line-54"></a>	<span class="n">LineEdit</span> <span class="o">*</span><span class="n">search_box</span><span class="p">;</span>
+<a name="line-55"></a>	<span class="n">Tree</span> <span class="o">*</span><span class="n">search_options</span><span class="p">;</span>
+<a name="line-56"></a>	<span class="n">String</span> <span class="n">function</span><span class="p">;</span>
+<a name="line-57"></a>
+<a name="line-58"></a>	<span class="kt">void</span> <span class="nf">_update_search</span><span class="p">();</span>
+<a name="line-59"></a>
+<a name="line-60"></a>	<span class="kt">void</span> <span class="nf">_sbox_input</span><span class="p">(</span><span class="k">const</span> <span class="n">Ref</span><span class="o">&lt;</span><span class="n">InputEvent</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">p_ie</span><span class="p">);</span>
+<a name="line-61"></a>	<span class="n">Vector</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">functions</span><span class="p">;</span>
+<a name="line-62"></a>
+<a name="line-63"></a>	<span class="kt">void</span> <span class="nf">_confirmed</span><span class="p">();</span>
+<a name="line-64"></a>	<span class="kt">void</span> <span class="nf">_text_changed</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_newtext</span><span class="p">);</span>
+<a name="line-65"></a>
+<a name="line-66"></a><span class="nl">protected</span><span class="p">:</span>
+<a name="line-67"></a>	<span class="kt">void</span> <span class="n">_notification</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_what</span><span class="p">);</span>
+<a name="line-68"></a>	<span class="k">static</span> <span class="kt">void</span> <span class="nf">_bind_methods</span><span class="p">();</span>
+<a name="line-69"></a>
+<a name="line-70"></a><span class="nl">public</span><span class="p">:</span>
+<a name="line-71"></a>	<span class="kt">void</span> <span class="n">popup_dialog</span><span class="p">(</span><span class="k">const</span> <span class="n">Vector</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">p_functions</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">p_dontclear</span> <span class="o">=</span> <span class="nb">false</span><span class="p">);</span>
+<a name="line-72"></a>	<span class="n">ScriptEditorQuickOpen</span><span class="p">();</span>
+<a name="line-73"></a><span class="p">};</span>
+<a name="line-74"></a>
+<a name="line-75"></a><span class="n">class</span> <span class="n">ScriptEditorDebugger</span><span class="p">;</span>
+<a name="line-76"></a>
+<a name="line-77"></a><span class="n">class</span> <span class="nl">ScriptEditorBase</span> <span class="p">:</span> <span class="n">public</span> <span class="n">VBoxContainer</span> <span class="p">{</span>
+<a name="line-78"></a>	<span class="n">GDCLASS</span><span class="p">(</span><span class="n">ScriptEditorBase</span><span class="p">,</span> <span class="n">VBoxContainer</span><span class="p">);</span>
+<a name="line-79"></a>
+<a name="line-80"></a><span class="nl">protected</span><span class="p">:</span>
+<a name="line-81"></a>	<span class="k">static</span> <span class="kt">void</span> <span class="n">_bind_methods</span><span class="p">();</span>
+<a name="line-82"></a>
+<a name="line-83"></a><span class="nl">public</span><span class="p">:</span>
+<a name="line-84"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="n">add_syntax_highlighter</span><span class="p">(</span><span class="n">SyntaxHighlighter</span> <span class="o">*</span><span class="n">p_highlighter</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-85"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">set_syntax_highlighter</span><span class="p">(</span><span class="n">SyntaxHighlighter</span> <span class="o">*</span><span class="n">p_highlighter</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-86"></a>
+<a name="line-87"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">apply_code</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-88"></a>	<span class="n">virtual</span> <span class="n">RES</span> <span class="nf">get_edited_resource</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-89"></a>	<span class="n">virtual</span> <span class="n">Vector</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">get_functions</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-90"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">set_edited_resource</span><span class="p">(</span><span class="k">const</span> <span class="n">RES</span> <span class="o">&amp;</span><span class="n">p_res</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-91"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">enable_editor</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-92"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">reload_text</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-93"></a>	<span class="n">virtual</span> <span class="n">String</span> <span class="nf">get_name</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-94"></a>	<span class="n">virtual</span> <span class="n">Ref</span><span class="o">&lt;</span><span class="n">Texture</span><span class="o">&gt;</span> <span class="n">get_icon</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-95"></a>	<span class="n">virtual</span> <span class="kt">bool</span> <span class="nf">is_unsaved</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-96"></a>	<span class="n">virtual</span> <span class="n">Variant</span> <span class="nf">get_edit_state</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-97"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">set_edit_state</span><span class="p">(</span><span class="k">const</span> <span class="n">Variant</span> <span class="o">&amp;</span><span class="n">p_state</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-98"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">goto_line</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_line</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">p_with_error</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-99"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">set_executing_line</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_line</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-100"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">clear_executing_line</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-101"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">trim_trailing_whitespace</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-102"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">insert_final_newline</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-103"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">convert_indent_to_spaces</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-104"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">convert_indent_to_tabs</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-105"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">ensure_focus</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-106"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">tag_saved_version</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-107"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">reload</span><span class="p">(</span><span class="kt">bool</span> <span class="n">p_soft</span><span class="p">)</span> <span class="p">{}</span>
+<a name="line-108"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">get_breakpoints</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">p_breakpoints</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-109"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">add_callback</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_function</span><span class="p">,</span> <span class="n">PoolStringArray</span> <span class="n">p_args</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-110"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">update_settings</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-111"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">set_debugger_active</span><span class="p">(</span><span class="kt">bool</span> <span class="n">p_active</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-112"></a>	<span class="n">virtual</span> <span class="kt">bool</span> <span class="nf">can_lose_focus_on_node_selection</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span> <span class="p">}</span>
+<a name="line-113"></a>
+<a name="line-114"></a>	<span class="n">virtual</span> <span class="kt">bool</span> <span class="nf">show_members_overview</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-115"></a>
+<a name="line-116"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">set_tooltip_request_func</span><span class="p">(</span><span class="n">String</span> <span class="n">p_method</span><span class="p">,</span> <span class="n">Object</span> <span class="o">*</span><span class="n">p_obj</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-117"></a>	<span class="n">virtual</span> <span class="n">Control</span> <span class="o">*</span><span class="nf">get_edit_menu</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-118"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">clear_edit_menu</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-119"></a>
+<a name="line-120"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">validate</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<a name="line-121"></a>
+<a name="line-122"></a>	<span class="n">ScriptEditorBase</span><span class="p">()</span> <span class="p">{}</span>
+<a name="line-123"></a><span class="p">};</span>
+<a name="line-124"></a>
+<a name="line-125"></a><span class="k">typedef</span> <span class="n">SyntaxHighlighter</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">CreateSyntaxHighlighterFunc</span><span class="p">)();</span>
+<a name="line-126"></a><span class="k">typedef</span> <span class="n">ScriptEditorBase</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">CreateScriptEditorFunc</span><span class="p">)(</span><span class="k">const</span> <span class="n">RES</span> <span class="o">&amp;</span><span class="n">p_resource</span><span class="p">);</span>
+<a name="line-127"></a>
+<a name="line-128"></a><span class="n">class</span> <span class="n">EditorScriptCodeCompletionCache</span><span class="p">;</span>
+<a name="line-129"></a><span class="n">class</span> <span class="n">FindInFilesDialog</span><span class="p">;</span>
+<a name="line-130"></a><span class="n">class</span> <span class="n">FindInFilesPanel</span><span class="p">;</span>
+<a name="line-131"></a>
+<a name="line-132"></a><span class="n">class</span> <span class="nl">ScriptEditor</span> <span class="p">:</span> <span class="n">public</span> <span class="n">PanelContainer</span> <span class="p">{</span>
+<a name="line-133"></a>	<span class="n">GDCLASS</span><span class="p">(</span><span class="n">ScriptEditor</span><span class="p">,</span> <span class="n">PanelContainer</span><span class="p">);</span>
+<a name="line-134"></a>
+<a name="line-135"></a>	<span class="n">EditorNode</span> <span class="o">*</span><span class="n">editor</span><span class="p">;</span>
+<a name="line-136"></a>	<span class="k">enum</span> <span class="p">{</span>
+<a name="line-137"></a>		<span class="n">FILE_NEW</span><span class="p">,</span>
+<a name="line-138"></a>		<span class="n">FILE_NEW_TEXTFILE</span><span class="p">,</span>
+<a name="line-139"></a>		<span class="n">FILE_OPEN</span><span class="p">,</span>
+<a name="line-140"></a>		<span class="n">FILE_REOPEN_CLOSED</span><span class="p">,</span>
+<a name="line-141"></a>		<span class="n">FILE_OPEN_RECENT</span><span class="p">,</span>
+<a name="line-142"></a>		<span class="n">FILE_SAVE</span><span class="p">,</span>
+<a name="line-143"></a>		<span class="n">FILE_SAVE_AS</span><span class="p">,</span>
+<a name="line-144"></a>		<span class="n">FILE_SAVE_ALL</span><span class="p">,</span>
+<a name="line-145"></a>		<span class="n">FILE_THEME</span><span class="p">,</span>
+<a name="line-146"></a>		<span class="n">FILE_RUN</span><span class="p">,</span>
+<a name="line-147"></a>		<span class="n">FILE_CLOSE</span><span class="p">,</span>
+<a name="line-148"></a>		<span class="n">CLOSE_DOCS</span><span class="p">,</span>
+<a name="line-149"></a>		<span class="n">CLOSE_ALL</span><span class="p">,</span>
+<a name="line-150"></a>		<span class="n">CLOSE_OTHER_TABS</span><span class="p">,</span>
+<a name="line-151"></a>		<span class="n">TOGGLE_SCRIPTS_PANEL</span><span class="p">,</span>
+<a name="line-152"></a>		<span class="n">SHOW_IN_FILE_SYSTEM</span><span class="p">,</span>
+<a name="line-153"></a>		<span class="n">FILE_COPY_PATH</span><span class="p">,</span>
+<a name="line-154"></a>		<span class="n">FILE_TOOL_RELOAD</span><span class="p">,</span>
+<a name="line-155"></a>		<span class="n">FILE_TOOL_RELOAD_SOFT</span><span class="p">,</span>
+<a name="line-156"></a>		<span class="n">DEBUG_NEXT</span><span class="p">,</span>
+<a name="line-157"></a>		<span class="n">DEBUG_STEP</span><span class="p">,</span>
+<a name="line-158"></a>		<span class="n">DEBUG_BREAK</span><span class="p">,</span>
+<a name="line-159"></a>		<span class="n">DEBUG_CONTINUE</span><span class="p">,</span>
+<a name="line-160"></a>		<span class="n">DEBUG_KEEP_DEBUGGER_OPEN</span><span class="p">,</span>
+<a name="line-161"></a>		<span class="n">DEBUG_WITH_EXTERNAL_EDITOR</span><span class="p">,</span>
+<a name="line-162"></a>		<span class="n">SEARCH_IN_FILES</span><span class="p">,</span>
+<a name="line-163"></a>		<span class="n">REPLACE_IN_FILES</span><span class="p">,</span>
+<a name="line-164"></a>		<span class="n">SEARCH_HELP</span><span class="p">,</span>
+<a name="line-165"></a>		<span class="n">SEARCH_WEBSITE</span><span class="p">,</span>
+<a name="line-166"></a>		<span class="n">HELP_SEARCH_FIND</span><span class="p">,</span>
+<a name="line-167"></a>		<span class="n">HELP_SEARCH_FIND_NEXT</span><span class="p">,</span>
+<a name="line-168"></a>		<span class="n">HELP_SEARCH_FIND_PREVIOUS</span><span class="p">,</span>
+<a name="line-169"></a>		<span class="n">WINDOW_MOVE_UP</span><span class="p">,</span>
+<a name="line-170"></a>		<span class="n">WINDOW_MOVE_DOWN</span><span class="p">,</span>
+<a name="line-171"></a>		<span class="n">WINDOW_NEXT</span><span class="p">,</span>
+<a name="line-172"></a>		<span class="n">WINDOW_PREV</span><span class="p">,</span>
+<a name="line-173"></a>		<span class="n">WINDOW_SORT</span><span class="p">,</span>
+<a name="line-174"></a>		<span class="n">WINDOW_SELECT_BASE</span> <span class="o">=</span> <span class="mi">100</span>
+<a name="line-175"></a>	<span class="p">};</span>
+<a name="line-176"></a>
+<a name="line-177"></a>	<span class="k">enum</span> <span class="p">{</span>
+<a name="line-178"></a>		<span class="n">THEME_IMPORT</span><span class="p">,</span>
+<a name="line-179"></a>		<span class="n">THEME_RELOAD</span><span class="p">,</span>
+<a name="line-180"></a>		<span class="n">THEME_SAVE</span><span class="p">,</span>
+<a name="line-181"></a>		<span class="n">THEME_SAVE_AS</span>
+<a name="line-182"></a>	<span class="p">};</span>
+<a name="line-183"></a>
+<a name="line-184"></a>	<span class="k">enum</span> <span class="n">ScriptSortBy</span> <span class="p">{</span>
+<a name="line-185"></a>		<span class="n">SORT_BY_NAME</span><span class="p">,</span>
+<a name="line-186"></a>		<span class="n">SORT_BY_PATH</span><span class="p">,</span>
+<a name="line-187"></a>		<span class="n">SORT_BY_NONE</span>
+<a name="line-188"></a>	<span class="p">};</span>
+<a name="line-189"></a>
+<a name="line-190"></a>	<span class="k">enum</span> <span class="n">ScriptListName</span> <span class="p">{</span>
+<a name="line-191"></a>		<span class="n">DISPLAY_NAME</span><span class="p">,</span>
+<a name="line-192"></a>		<span class="n">DISPLAY_DIR_AND_NAME</span><span class="p">,</span>
+<a name="line-193"></a>		<span class="n">DISPLAY_FULL_PATH</span><span class="p">,</span>
+<a name="line-194"></a>	<span class="p">};</span>
+<a name="line-195"></a>
+<a name="line-196"></a>	<span class="n">HBoxContainer</span> <span class="o">*</span><span class="n">menu_hb</span><span class="p">;</span>
+<a name="line-197"></a>	<span class="n">MenuButton</span> <span class="o">*</span><span class="n">file_menu</span><span class="p">;</span>
+<a name="line-198"></a>	<span class="n">MenuButton</span> <span class="o">*</span><span class="n">edit_menu</span><span class="p">;</span>
+<a name="line-199"></a>	<span class="n">MenuButton</span> <span class="o">*</span><span class="n">script_search_menu</span><span class="p">;</span>
+<a name="line-200"></a>	<span class="n">MenuButton</span> <span class="o">*</span><span class="n">debug_menu</span><span class="p">;</span>
+<a name="line-201"></a>	<span class="n">PopupMenu</span> <span class="o">*</span><span class="n">context_menu</span><span class="p">;</span>
+<a name="line-202"></a>	<span class="n">Timer</span> <span class="o">*</span><span class="n">autosave_timer</span><span class="p">;</span>
+<a name="line-203"></a>	<span class="kt">uint64_t</span> <span class="n">idle</span><span class="p">;</span>
+<a name="line-204"></a>
+<a name="line-205"></a>	<span class="n">PopupMenu</span> <span class="o">*</span><span class="n">recent_scripts</span><span class="p">;</span>
+<a name="line-206"></a>	<span class="n">PopupMenu</span> <span class="o">*</span><span class="n">theme_submenu</span><span class="p">;</span>
+<a name="line-207"></a>
+<a name="line-208"></a>	<span class="n">Button</span> <span class="o">*</span><span class="n">help_search</span><span class="p">;</span>
+<a name="line-209"></a>	<span class="n">Button</span> <span class="o">*</span><span class="n">site_search</span><span class="p">;</span>
+<a name="line-210"></a>	<span class="n">EditorHelpSearch</span> <span class="o">*</span><span class="n">help_search_dialog</span><span class="p">;</span>
+<a name="line-211"></a>
+<a name="line-212"></a>	<span class="n">ItemList</span> <span class="o">*</span><span class="n">script_list</span><span class="p">;</span>
+<a name="line-213"></a>	<span class="n">HSplitContainer</span> <span class="o">*</span><span class="n">script_split</span><span class="p">;</span>
+<a name="line-214"></a>	<span class="n">ItemList</span> <span class="o">*</span><span class="n">members_overview</span><span class="p">;</span>
+<a name="line-215"></a>	<span class="n">LineEdit</span> <span class="o">*</span><span class="n">filter_scripts</span><span class="p">;</span>
+<a name="line-216"></a>	<span class="n">LineEdit</span> <span class="o">*</span><span class="n">filter_methods</span><span class="p">;</span>
+<a name="line-217"></a>	<span class="n">VBoxContainer</span> <span class="o">*</span><span class="n">scripts_vbox</span><span class="p">;</span>
+<a name="line-218"></a>	<span class="n">VBoxContainer</span> <span class="o">*</span><span class="n">overview_vbox</span><span class="p">;</span>
+<a name="line-219"></a>	<span class="n">HBoxContainer</span> <span class="o">*</span><span class="n">buttons_hbox</span><span class="p">;</span>
+<a name="line-220"></a>	<span class="n">Label</span> <span class="o">*</span><span class="n">filename</span><span class="p">;</span>
+<a name="line-221"></a>	<span class="n">ToolButton</span> <span class="o">*</span><span class="n">members_overview_alphabeta_sort_button</span><span class="p">;</span>
+<a name="line-222"></a>	<span class="kt">bool</span> <span class="n">members_overview_enabled</span><span class="p">;</span>
+<a name="line-223"></a>	<span class="n">ItemList</span> <span class="o">*</span><span class="n">help_overview</span><span class="p">;</span>
+<a name="line-224"></a>	<span class="kt">bool</span> <span class="n">help_overview_enabled</span><span class="p">;</span>
+<a name="line-225"></a>	<span class="n">VSplitContainer</span> <span class="o">*</span><span class="n">list_split</span><span class="p">;</span>
+<a name="line-226"></a>	<span class="n">TabContainer</span> <span class="o">*</span><span class="n">tab_container</span><span class="p">;</span>
+<a name="line-227"></a>	<span class="n">EditorFileDialog</span> <span class="o">*</span><span class="n">file_dialog</span><span class="p">;</span>
+<a name="line-228"></a>	<span class="n">AcceptDialog</span> <span class="o">*</span><span class="n">error_dialog</span><span class="p">;</span>
+<a name="line-229"></a>	<span class="n">ConfirmationDialog</span> <span class="o">*</span><span class="n">erase_tab_confirm</span><span class="p">;</span>
+<a name="line-230"></a>	<span class="n">ScriptCreateDialog</span> <span class="o">*</span><span class="n">script_create_dialog</span><span class="p">;</span>
+<a name="line-231"></a>	<span class="n">ScriptEditorDebugger</span> <span class="o">*</span><span class="n">debugger</span><span class="p">;</span>
+<a name="line-232"></a>	<span class="n">ToolButton</span> <span class="o">*</span><span class="n">scripts_visible</span><span class="p">;</span>
+<a name="line-233"></a>
+<a name="line-234"></a>	<span class="n">String</span> <span class="n">current_theme</span><span class="p">;</span>
+<a name="line-235"></a>
+<a name="line-236"></a>	<span class="n">TextureRect</span> <span class="o">*</span><span class="n">script_icon</span><span class="p">;</span>
+<a name="line-237"></a>	<span class="n">Label</span> <span class="o">*</span><span class="n">script_name_label</span><span class="p">;</span>
+<a name="line-238"></a>
+<a name="line-239"></a>	<span class="n">ToolButton</span> <span class="o">*</span><span class="n">script_back</span><span class="p">;</span>
+<a name="line-240"></a>	<span class="n">ToolButton</span> <span class="o">*</span><span class="n">script_forward</span><span class="p">;</span>
+<a name="line-241"></a>
+<a name="line-242"></a>	<span class="n">FindInFilesDialog</span> <span class="o">*</span><span class="n">find_in_files_dialog</span><span class="p">;</span>
+<a name="line-243"></a>	<span class="n">FindInFilesPanel</span> <span class="o">*</span><span class="n">find_in_files</span><span class="p">;</span>
+<a name="line-244"></a>	<span class="n">Button</span> <span class="o">*</span><span class="n">find_in_files_button</span><span class="p">;</span>
+<a name="line-245"></a>
+<a name="line-246"></a>	<span class="k">enum</span> <span class="p">{</span>
+<a name="line-247"></a>		<span class="n">SCRIPT_EDITOR_FUNC_MAX</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
+<a name="line-248"></a>		<span class="n">SYNTAX_HIGHLIGHTER_FUNC_MAX</span> <span class="o">=</span> <span class="mi">32</span>
+<a name="line-249"></a>	<span class="p">};</span>
+<a name="line-250"></a>
+<a name="line-251"></a>	<span class="k">static</span> <span class="kt">int</span> <span class="n">script_editor_func_count</span><span class="p">;</span>
+<a name="line-252"></a>	<span class="k">static</span> <span class="n">CreateScriptEditorFunc</span> <span class="n">script_editor_funcs</span><span class="p">[</span><span class="n">SCRIPT_EDITOR_FUNC_MAX</span><span class="p">];</span>
+<a name="line-253"></a>
+<a name="line-254"></a>	<span class="k">static</span> <span class="kt">int</span> <span class="n">syntax_highlighters_func_count</span><span class="p">;</span>
+<a name="line-255"></a>	<span class="k">static</span> <span class="n">CreateSyntaxHighlighterFunc</span> <span class="n">syntax_highlighters_funcs</span><span class="p">[</span><span class="n">SYNTAX_HIGHLIGHTER_FUNC_MAX</span><span class="p">];</span>
+<a name="line-256"></a>
+<a name="line-257"></a>	<span class="k">struct</span> <span class="n">ScriptHistory</span> <span class="p">{</span>
+<a name="line-258"></a>		<span class="n">Control</span> <span class="o">*</span><span class="n">control</span><span class="p">;</span>
+<a name="line-259"></a>		<span class="n">Variant</span> <span class="n">state</span><span class="p">;</span>
+<a name="line-260"></a>	<span class="p">};</span>
+<a name="line-261"></a>
+<a name="line-262"></a>	<span class="n">Vector</span><span class="o">&lt;</span><span class="n">ScriptHistory</span><span class="o">&gt;</span> <span class="n">history</span><span class="p">;</span>
+<a name="line-263"></a>	<span class="kt">int</span> <span class="n">history_pos</span><span class="p">;</span>
+<a name="line-264"></a>
+<a name="line-265"></a>	<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">previous_scripts</span><span class="p">;</span>
+<a name="line-266"></a>	<span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">script_close_queue</span><span class="p">;</span>
+<a name="line-267"></a>
+<a name="line-268"></a>	<span class="kt">void</span> <span class="nf">_tab_changed</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_which</span><span class="p">);</span>
+<a name="line-269"></a>	<span class="kt">void</span> <span class="nf">_menu_option</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_option</span><span class="p">);</span>
+<a name="line-270"></a>	<span class="kt">void</span> <span class="nf">_update_debug_options</span><span class="p">();</span>
+<a name="line-271"></a>	<span class="kt">void</span> <span class="nf">_theme_option</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_option</span><span class="p">);</span>
+<a name="line-272"></a>	<span class="kt">void</span> <span class="nf">_show_save_theme_as_dialog</span><span class="p">();</span>
+<a name="line-273"></a>	<span class="kt">bool</span> <span class="nf">_has_docs_tab</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+<a name="line-274"></a>	<span class="kt">bool</span> <span class="nf">_has_script_tab</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+<a name="line-275"></a>	<span class="kt">void</span> <span class="nf">_prepare_file_menu</span><span class="p">();</span>
+<a name="line-276"></a>
+<a name="line-277"></a>	<span class="n">Tree</span> <span class="o">*</span><span class="n">disk_changed_list</span><span class="p">;</span>
+<a name="line-278"></a>	<span class="n">ConfirmationDialog</span> <span class="o">*</span><span class="n">disk_changed</span><span class="p">;</span>
+<a name="line-279"></a>
+<a name="line-280"></a>	<span class="kt">bool</span> <span class="n">restoring_layout</span><span class="p">;</span>
+<a name="line-281"></a>
+<a name="line-282"></a>	<span class="n">String</span> <span class="nf">_get_debug_tooltip</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_text</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">_se</span><span class="p">);</span>
+<a name="line-283"></a>
+<a name="line-284"></a>	<span class="kt">void</span> <span class="nf">_resave_scripts</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_str</span><span class="p">);</span>
+<a name="line-285"></a>
+<a name="line-286"></a>	<span class="kt">bool</span> <span class="nf">_test_script_times_on_disk</span><span class="p">(</span><span class="n">RES</span> <span class="n">p_for_script</span> <span class="o">=</span> <span class="n">Ref</span><span class="o">&lt;</span><span class="n">Resource</span><span class="o">&gt;</span><span class="p">());</span>
+<a name="line-287"></a>
+<a name="line-288"></a>	<span class="kt">void</span> <span class="nf">_add_recent_script</span><span class="p">(</span><span class="n">String</span> <span class="n">p_path</span><span class="p">);</span>
+<a name="line-289"></a>	<span class="kt">void</span> <span class="nf">_update_recent_scripts</span><span class="p">();</span>
+<a name="line-290"></a>	<span class="kt">void</span> <span class="nf">_open_recent_script</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_idx</span><span class="p">);</span>
+<a name="line-291"></a>
+<a name="line-292"></a>	<span class="kt">void</span> <span class="nf">_show_error_dialog</span><span class="p">(</span><span class="n">String</span> <span class="n">p_path</span><span class="p">);</span>
+<a name="line-293"></a>
+<a name="line-294"></a>	<span class="kt">void</span> <span class="nf">_close_tab</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_idx</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">p_save</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">p_history_back</span> <span class="o">=</span> <span class="nb">true</span><span class="p">);</span>
+<a name="line-295"></a>
+<a name="line-296"></a>	<span class="kt">void</span> <span class="nf">_close_current_tab</span><span class="p">(</span><span class="kt">bool</span> <span class="n">p_save</span> <span class="o">=</span> <span class="nb">true</span><span class="p">);</span>
+<a name="line-297"></a>	<span class="kt">void</span> <span class="nf">_close_discard_current_tab</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_str</span><span class="p">);</span>
+<a name="line-298"></a>	<span class="kt">void</span> <span class="nf">_close_docs_tab</span><span class="p">();</span>
+<a name="line-299"></a>	<span class="kt">void</span> <span class="nf">_close_other_tabs</span><span class="p">();</span>
+<a name="line-300"></a>	<span class="kt">void</span> <span class="nf">_close_all_tabs</span><span class="p">();</span>
+<a name="line-301"></a>	<span class="kt">void</span> <span class="nf">_queue_close_tabs</span><span class="p">();</span>
+<a name="line-302"></a>
+<a name="line-303"></a>	<span class="kt">void</span> <span class="nf">_copy_script_path</span><span class="p">();</span>
+<a name="line-304"></a>
+<a name="line-305"></a>	<span class="kt">void</span> <span class="nf">_ask_close_current_unsaved_tab</span><span class="p">(</span><span class="n">ScriptEditorBase</span> <span class="o">*</span><span class="n">current</span><span class="p">);</span>
+<a name="line-306"></a>
+<a name="line-307"></a>	<span class="kt">bool</span> <span class="n">grab_focus_block</span><span class="p">;</span>
+<a name="line-308"></a>
+<a name="line-309"></a>	<span class="kt">bool</span> <span class="n">pending_auto_reload</span><span class="p">;</span>
+<a name="line-310"></a>	<span class="kt">bool</span> <span class="n">auto_reload_running_scripts</span><span class="p">;</span>
+<a name="line-311"></a>	<span class="kt">void</span> <span class="nf">_trigger_live_script_reload</span><span class="p">();</span>
+<a name="line-312"></a>	<span class="kt">void</span> <span class="nf">_live_auto_reload_running_scripts</span><span class="p">();</span>
+<a name="line-313"></a>
+<a name="line-314"></a>	<span class="kt">void</span> <span class="nf">_update_selected_editor_menu</span><span class="p">();</span>
+<a name="line-315"></a>
+<a name="line-316"></a>	<span class="n">EditorScriptCodeCompletionCache</span> <span class="o">*</span><span class="n">completion_cache</span><span class="p">;</span>
+<a name="line-317"></a>
+<a name="line-318"></a>	<span class="kt">void</span> <span class="nf">_editor_play</span><span class="p">();</span>
+<a name="line-319"></a>	<span class="kt">void</span> <span class="nf">_editor_pause</span><span class="p">();</span>
+<a name="line-320"></a>	<span class="kt">void</span> <span class="nf">_editor_stop</span><span class="p">();</span>
+<a name="line-321"></a>
+<a name="line-322"></a>	<span class="kt">int</span> <span class="n">edit_pass</span><span class="p">;</span>
+<a name="line-323"></a>
+<a name="line-324"></a>	<span class="kt">void</span> <span class="nf">_add_callback</span><span class="p">(</span><span class="n">Object</span> <span class="o">*</span><span class="n">p_obj</span><span class="p">,</span> <span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_function</span><span class="p">,</span> <span class="k">const</span> <span class="n">PoolStringArray</span> <span class="o">&amp;</span><span class="n">p_args</span><span class="p">);</span>
+<a name="line-325"></a>	<span class="kt">void</span> <span class="nf">_res_saved_callback</span><span class="p">(</span><span class="k">const</span> <span class="n">Ref</span><span class="o">&lt;</span><span class="n">Resource</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">p_res</span><span class="p">);</span>
+<a name="line-326"></a>	<span class="kt">void</span> <span class="nf">_scene_saved_callback</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_path</span><span class="p">);</span>
+<a name="line-327"></a>
+<a name="line-328"></a>	<span class="kt">bool</span> <span class="n">trim_trailing_whitespace_on_save</span><span class="p">;</span>
+<a name="line-329"></a>	<span class="kt">bool</span> <span class="n">use_space_indentation</span><span class="p">;</span>
+<a name="line-330"></a>	<span class="kt">bool</span> <span class="n">convert_indent_on_save</span><span class="p">;</span>
+<a name="line-331"></a>
+<a name="line-332"></a>	<span class="kt">void</span> <span class="nf">_goto_script_line2</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_line</span><span class="p">);</span>
+<a name="line-333"></a>	<span class="kt">void</span> <span class="nf">_goto_script_line</span><span class="p">(</span><span class="n">REF</span> <span class="n">p_script</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p_line</span><span class="p">);</span>
+<a name="line-334"></a>	<span class="kt">void</span> <span class="nf">_set_execution</span><span class="p">(</span><span class="n">REF</span> <span class="n">p_script</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p_line</span><span class="p">);</span>
+<a name="line-335"></a>	<span class="kt">void</span> <span class="nf">_clear_execution</span><span class="p">(</span><span class="n">REF</span> <span class="n">p_script</span><span class="p">);</span>
+<a name="line-336"></a>	<span class="kt">void</span> <span class="nf">_breaked</span><span class="p">(</span><span class="kt">bool</span> <span class="n">p_breaked</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">p_can_debug</span><span class="p">);</span>
+<a name="line-337"></a>	<span class="kt">void</span> <span class="nf">_show_debugger</span><span class="p">(</span><span class="kt">bool</span> <span class="n">p_show</span><span class="p">);</span>
+<a name="line-338"></a>	<span class="kt">void</span> <span class="nf">_script_created</span><span class="p">(</span><span class="n">Ref</span><span class="o">&lt;</span><span class="n">Script</span><span class="o">&gt;</span> <span class="n">p_script</span><span class="p">);</span>
+<a name="line-339"></a>
+<a name="line-340"></a>	<span class="n">ScriptEditorBase</span> <span class="o">*</span><span class="nf">_get_current_editor</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+<a name="line-341"></a>	<span class="n">Control</span> <span class="o">*</span><span class="nf">_get_base_editor</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+<a name="line-342"></a>
+<a name="line-343"></a>	<span class="kt">void</span> <span class="nf">_save_layout</span><span class="p">();</span>
+<a name="line-344"></a>	<span class="kt">void</span> <span class="nf">_editor_settings_changed</span><span class="p">();</span>
+<a name="line-345"></a>	<span class="kt">void</span> <span class="nf">_autosave_scripts</span><span class="p">();</span>
+<a name="line-346"></a>	<span class="kt">void</span> <span class="nf">_update_autosave_timer</span><span class="p">();</span>
+<a name="line-347"></a>
+<a name="line-348"></a>	<span class="kt">void</span> <span class="nf">_update_members_overview_visibility</span><span class="p">();</span>
+<a name="line-349"></a>	<span class="kt">void</span> <span class="nf">_update_members_overview</span><span class="p">();</span>
+<a name="line-350"></a>	<span class="kt">void</span> <span class="nf">_toggle_members_overview_alpha_sort</span><span class="p">(</span><span class="kt">bool</span> <span class="n">p_alphabetic_sort</span><span class="p">);</span>
+<a name="line-351"></a>	<span class="kt">void</span> <span class="nf">_filter_scripts_text_changed</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_newtext</span><span class="p">);</span>
+<a name="line-352"></a>	<span class="kt">void</span> <span class="nf">_filter_methods_text_changed</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_newtext</span><span class="p">);</span>
+<a name="line-353"></a>	<span class="kt">void</span> <span class="nf">_update_script_names</span><span class="p">();</span>
+<a name="line-354"></a>	<span class="kt">void</span> <span class="nf">_update_script_connections</span><span class="p">();</span>
+<a name="line-355"></a>	<span class="kt">bool</span> <span class="n">_sort_list_on_update</span><span class="p">;</span>
+<a name="line-356"></a>
+<a name="line-357"></a>	<span class="kt">void</span> <span class="nf">_members_overview_selected</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_idx</span><span class="p">);</span>
+<a name="line-358"></a>	<span class="kt">void</span> <span class="nf">_script_selected</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_idx</span><span class="p">);</span>
+<a name="line-359"></a>
+<a name="line-360"></a>	<span class="kt">void</span> <span class="nf">_update_help_overview_visibility</span><span class="p">();</span>
+<a name="line-361"></a>	<span class="kt">void</span> <span class="nf">_update_help_overview</span><span class="p">();</span>
+<a name="line-362"></a>	<span class="kt">void</span> <span class="nf">_help_overview_selected</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_idx</span><span class="p">);</span>
+<a name="line-363"></a>
+<a name="line-364"></a>	<span class="kt">void</span> <span class="nf">_find_scripts</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">p_base</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">p_current</span><span class="p">,</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">Ref</span><span class="o">&lt;</span><span class="n">Script</span><span class="o">&gt;&gt;</span> <span class="o">&amp;</span><span class="n">used</span><span class="p">);</span>
+<a name="line-365"></a>
+<a name="line-366"></a>	<span class="kt">void</span> <span class="nf">_tree_changed</span><span class="p">();</span>
+<a name="line-367"></a>
+<a name="line-368"></a>	<span class="kt">void</span> <span class="nf">_script_split_dragged</span><span class="p">(</span><span class="kt">float</span><span class="p">);</span>
+<a name="line-369"></a>
+<a name="line-370"></a>	<span class="n">Variant</span> <span class="nf">get_drag_data_fw</span><span class="p">(</span><span class="k">const</span> <span class="n">Point2</span> <span class="o">&amp;</span><span class="n">p_point</span><span class="p">,</span> <span class="n">Control</span> <span class="o">*</span><span class="n">p_from</span><span class="p">);</span>
+<a name="line-371"></a>	<span class="kt">bool</span> <span class="nf">can_drop_data_fw</span><span class="p">(</span><span class="k">const</span> <span class="n">Point2</span> <span class="o">&amp;</span><span class="n">p_point</span><span class="p">,</span> <span class="k">const</span> <span class="n">Variant</span> <span class="o">&amp;</span><span class="n">p_data</span><span class="p">,</span> <span class="n">Control</span> <span class="o">*</span><span class="n">p_from</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+<a name="line-372"></a>	<span class="kt">void</span> <span class="nf">drop_data_fw</span><span class="p">(</span><span class="k">const</span> <span class="n">Point2</span> <span class="o">&amp;</span><span class="n">p_point</span><span class="p">,</span> <span class="k">const</span> <span class="n">Variant</span> <span class="o">&amp;</span><span class="n">p_data</span><span class="p">,</span> <span class="n">Control</span> <span class="o">*</span><span class="n">p_from</span><span class="p">);</span>
+<a name="line-373"></a>
+<a name="line-374"></a>	<span class="kt">void</span> <span class="nf">_input</span><span class="p">(</span><span class="k">const</span> <span class="n">Ref</span><span class="o">&lt;</span><span class="n">InputEvent</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">p_event</span><span class="p">);</span>
+<a name="line-375"></a>	<span class="kt">void</span> <span class="nf">_unhandled_input</span><span class="p">(</span><span class="k">const</span> <span class="n">Ref</span><span class="o">&lt;</span><span class="n">InputEvent</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">p_event</span><span class="p">);</span>
+<a name="line-376"></a>
+<a name="line-377"></a>	<span class="kt">void</span> <span class="nf">_script_list_gui_input</span><span class="p">(</span><span class="k">const</span> <span class="n">Ref</span><span class="o">&lt;</span><span class="n">InputEvent</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">ev</span><span class="p">);</span>
+<a name="line-378"></a>	<span class="kt">void</span> <span class="nf">_make_script_list_context_menu</span><span class="p">();</span>
+<a name="line-379"></a>
+<a name="line-380"></a>	<span class="kt">void</span> <span class="nf">_help_search</span><span class="p">(</span><span class="n">String</span> <span class="n">p_text</span><span class="p">);</span>
+<a name="line-381"></a>
+<a name="line-382"></a>	<span class="kt">void</span> <span class="nf">_history_forward</span><span class="p">();</span>
+<a name="line-383"></a>	<span class="kt">void</span> <span class="nf">_history_back</span><span class="p">();</span>
+<a name="line-384"></a>
+<a name="line-385"></a>	<span class="kt">bool</span> <span class="n">waiting_update_names</span><span class="p">;</span>
+<a name="line-386"></a>
+<a name="line-387"></a>	<span class="kt">void</span> <span class="nf">_help_class_open</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_class</span><span class="p">);</span>
+<a name="line-388"></a>	<span class="kt">void</span> <span class="nf">_help_class_goto</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_desc</span><span class="p">);</span>
+<a name="line-389"></a>	<span class="kt">void</span> <span class="nf">_update_history_arrows</span><span class="p">();</span>
+<a name="line-390"></a>	<span class="kt">void</span> <span class="nf">_save_history</span><span class="p">();</span>
+<a name="line-391"></a>	<span class="kt">void</span> <span class="nf">_go_to_tab</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_idx</span><span class="p">);</span>
+<a name="line-392"></a>	<span class="kt">void</span> <span class="nf">_update_history_pos</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_new_pos</span><span class="p">);</span>
+<a name="line-393"></a>	<span class="kt">void</span> <span class="nf">_update_script_colors</span><span class="p">();</span>
+<a name="line-394"></a>	<span class="kt">void</span> <span class="nf">_update_modified_scripts_for_external_editor</span><span class="p">(</span><span class="n">Ref</span><span class="o">&lt;</span><span class="n">Script</span><span class="o">&gt;</span> <span class="n">p_for_script</span> <span class="o">=</span> <span class="n">Ref</span><span class="o">&lt;</span><span class="n">Script</span><span class="o">&gt;</span><span class="p">());</span>
+<a name="line-395"></a>
+<a name="line-396"></a>	<span class="kt">void</span> <span class="nf">_script_changed</span><span class="p">();</span>
+<a name="line-397"></a>	<span class="kt">int</span> <span class="n">file_dialog_option</span><span class="p">;</span>
+<a name="line-398"></a>	<span class="kt">void</span> <span class="nf">_file_dialog_action</span><span class="p">(</span><span class="n">String</span> <span class="n">p_file</span><span class="p">);</span>
+<a name="line-399"></a>
+<a name="line-400"></a>	<span class="n">Ref</span><span class="o">&lt;</span><span class="n">Script</span><span class="o">&gt;</span> <span class="n">_get_current_script</span><span class="p">();</span>
+<a name="line-401"></a>	<span class="n">Array</span> <span class="nf">_get_open_scripts</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+<a name="line-402"></a>
+<a name="line-403"></a>	<span class="n">Ref</span><span class="o">&lt;</span><span class="n">TextFile</span><span class="o">&gt;</span> <span class="n">_load_text_file</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_path</span><span class="p">,</span> <span class="n">Error</span> <span class="o">*</span><span class="n">r_error</span><span class="p">);</span>
+<a name="line-404"></a>	<span class="n">Error</span> <span class="nf">_save_text_file</span><span class="p">(</span><span class="n">Ref</span><span class="o">&lt;</span><span class="n">TextFile</span><span class="o">&gt;</span> <span class="n">p_text_file</span><span class="p">,</span> <span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_path</span><span class="p">);</span>
+<a name="line-405"></a>
+<a name="line-406"></a>	<span class="kt">void</span> <span class="nf">_on_find_in_files_requested</span><span class="p">(</span><span class="n">String</span> <span class="n">text</span><span class="p">);</span>
+<a name="line-407"></a>	<span class="kt">void</span> <span class="nf">_on_replace_in_files_requested</span><span class="p">(</span><span class="n">String</span> <span class="n">text</span><span class="p">);</span>
+<a name="line-408"></a>	<span class="kt">void</span> <span class="nf">_on_find_in_files_result_selected</span><span class="p">(</span><span class="n">String</span> <span class="n">fpath</span><span class="p">,</span> <span class="kt">int</span> <span class="n">line_number</span><span class="p">,</span> <span class="kt">int</span> <span class="n">begin</span><span class="p">,</span> <span class="kt">int</span> <span class="n">end</span><span class="p">);</span>
+<a name="line-409"></a>	<span class="kt">void</span> <span class="nf">_start_find_in_files</span><span class="p">(</span><span class="kt">bool</span> <span class="n">with_replace</span><span class="p">);</span>
+<a name="line-410"></a>	<span class="kt">void</span> <span class="nf">_on_find_in_files_modified_files</span><span class="p">(</span><span class="n">PoolStringArray</span> <span class="n">paths</span><span class="p">);</span>
+<a name="line-411"></a>
+<a name="line-412"></a>	<span class="k">static</span> <span class="kt">void</span> <span class="nf">_open_script_request</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_path</span><span class="p">);</span>
+<a name="line-413"></a>
+<a name="line-414"></a>	<span class="k">static</span> <span class="n">ScriptEditor</span> <span class="o">*</span><span class="n">script_editor</span><span class="p">;</span>
+<a name="line-415"></a>
+<a name="line-416"></a><span class="nl">protected</span><span class="p">:</span>
+<a name="line-417"></a>	<span class="kt">void</span> <span class="n">_notification</span><span class="p">(</span><span class="kt">int</span> <span class="n">p_what</span><span class="p">);</span>
+<a name="line-418"></a>	<span class="k">static</span> <span class="kt">void</span> <span class="nf">_bind_methods</span><span class="p">();</span>
+<a name="line-419"></a>
+<a name="line-420"></a><span class="nl">public</span><span class="p">:</span>
+<a name="line-421"></a>	<span class="k">static</span> <span class="n">ScriptEditor</span> <span class="o">*</span><span class="n">get_singleton</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">script_editor</span><span class="p">;</span> <span class="p">}</span>
+<a name="line-422"></a>
+<a name="line-423"></a>	<span class="kt">bool</span> <span class="n">toggle_scripts_panel</span><span class="p">();</span>
+<a name="line-424"></a>	<span class="kt">bool</span> <span class="nf">is_scripts_panel_toggled</span><span class="p">();</span>
+<a name="line-425"></a>	<span class="kt">void</span> <span class="nf">ensure_focus_current</span><span class="p">();</span>
+<a name="line-426"></a>	<span class="kt">void</span> <span class="nf">apply_scripts</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+<a name="line-427"></a>	<span class="kt">void</span> <span class="nf">open_script_create_dialog</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_base_name</span><span class="p">,</span> <span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_base_path</span><span class="p">);</span>
+<a name="line-428"></a>	<span class="kt">void</span> <span class="nf">reload_scripts</span><span class="p">();</span>
+<a name="line-429"></a>
+<a name="line-430"></a>	<span class="kt">void</span> <span class="nf">ensure_select_current</span><span class="p">();</span>
+<a name="line-431"></a>
+<a name="line-432"></a>	<span class="n">_FORCE_INLINE_</span> <span class="kt">bool</span> <span class="nf">edit</span><span class="p">(</span><span class="k">const</span> <span class="n">RES</span> <span class="o">&amp;</span><span class="n">p_resource</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">p_grab_focus</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">edit</span><span class="p">(</span><span class="n">p_resource</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">p_grab_focus</span><span class="p">);</span> <span class="p">}</span>
+<a name="line-433"></a>	<span class="kt">bool</span> <span class="nf">edit</span><span class="p">(</span><span class="k">const</span> <span class="n">RES</span> <span class="o">&amp;</span><span class="n">p_resource</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p_line</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p_col</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">p_grab_focus</span> <span class="o">=</span> <span class="nb">true</span><span class="p">);</span>
+<a name="line-434"></a>
+<a name="line-435"></a>	<span class="kt">void</span> <span class="nf">get_breakpoints</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">p_breakpoints</span><span class="p">);</span>
+<a name="line-436"></a>
+<a name="line-437"></a>	<span class="kt">void</span> <span class="nf">save_current_script</span><span class="p">();</span>
+<a name="line-438"></a>	<span class="kt">void</span> <span class="nf">save_all_scripts</span><span class="p">();</span>
+<a name="line-439"></a>
+<a name="line-440"></a>	<span class="kt">void</span> <span class="nf">set_window_layout</span><span class="p">(</span><span class="n">Ref</span><span class="o">&lt;</span><span class="n">ConfigFile</span><span class="o">&gt;</span> <span class="n">p_layout</span><span class="p">);</span>
+<a name="line-441"></a>	<span class="kt">void</span> <span class="nf">get_window_layout</span><span class="p">(</span><span class="n">Ref</span><span class="o">&lt;</span><span class="n">ConfigFile</span><span class="o">&gt;</span> <span class="n">p_layout</span><span class="p">);</span>
+<a name="line-442"></a>
+<a name="line-443"></a>	<span class="kt">void</span> <span class="nf">set_scene_root_script</span><span class="p">(</span><span class="n">Ref</span><span class="o">&lt;</span><span class="n">Script</span><span class="o">&gt;</span> <span class="n">p_script</span><span class="p">);</span>
+<a name="line-444"></a>	<span class="n">Vector</span><span class="o">&lt;</span><span class="n">Ref</span><span class="o">&lt;</span><span class="n">Script</span><span class="o">&gt;&gt;</span> <span class="n">get_open_scripts</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+<a name="line-445"></a>
+<a name="line-446"></a>	<span class="kt">bool</span> <span class="nf">script_goto_method</span><span class="p">(</span><span class="n">Ref</span><span class="o">&lt;</span><span class="n">Script</span><span class="o">&gt;</span> <span class="n">p_script</span><span class="p">,</span> <span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_method</span><span class="p">);</span>
+<a name="line-447"></a>
+<a name="line-448"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">edited_scene_changed</span><span class="p">();</span>
+<a name="line-449"></a>
+<a name="line-450"></a>	<span class="kt">void</span> <span class="nf">notify_script_close</span><span class="p">(</span><span class="k">const</span> <span class="n">Ref</span><span class="o">&lt;</span><span class="n">Script</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">p_script</span><span class="p">);</span>
+<a name="line-451"></a>	<span class="kt">void</span> <span class="nf">notify_script_changed</span><span class="p">(</span><span class="k">const</span> <span class="n">Ref</span><span class="o">&lt;</span><span class="n">Script</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">p_script</span><span class="p">);</span>
+<a name="line-452"></a>
+<a name="line-453"></a>	<span class="kt">void</span> <span class="nf">close_builtin_scripts_from_scene</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_scene</span><span class="p">);</span>
+<a name="line-454"></a>
+<a name="line-455"></a>	<span class="kt">void</span> <span class="nf">goto_help</span><span class="p">(</span><span class="k">const</span> <span class="n">String</span> <span class="o">&amp;</span><span class="n">p_desc</span><span class="p">)</span> <span class="p">{</span> <span class="n">_help_class_goto</span><span class="p">(</span><span class="n">p_desc</span><span class="p">);</span> <span class="p">}</span>
+<a name="line-456"></a>
+<a name="line-457"></a>	<span class="kt">bool</span> <span class="nf">can_take_away_focus</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+<a name="line-458"></a>
+<a name="line-459"></a>	<span class="n">VSplitContainer</span> <span class="o">*</span><span class="nf">get_left_list_split</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">list_split</span><span class="p">;</span> <span class="p">}</span>
+<a name="line-460"></a>
+<a name="line-461"></a>	<span class="n">ScriptEditorDebugger</span> <span class="o">*</span><span class="nf">get_debugger</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">debugger</span><span class="p">;</span> <span class="p">}</span>
+<a name="line-462"></a>	<span class="kt">void</span> <span class="nf">set_live_auto_reload_running_scripts</span><span class="p">(</span><span class="kt">bool</span> <span class="n">p_enabled</span><span class="p">);</span>
+<a name="line-463"></a>
+<a name="line-464"></a>	<span class="k">static</span> <span class="kt">void</span> <span class="nf">register_create_syntax_highlighter_function</span><span class="p">(</span><span class="n">CreateSyntaxHighlighterFunc</span> <span class="n">p_func</span><span class="p">);</span>
+<a name="line-465"></a>	<span class="k">static</span> <span class="kt">void</span> <span class="nf">register_create_script_editor_function</span><span class="p">(</span><span class="n">CreateScriptEditorFunc</span> <span class="n">p_func</span><span class="p">);</span>
+<a name="line-466"></a>
+<a name="line-467"></a><span class="hll">	<span class="n">ScriptEditor</span><span class="p">(</span><span class="n">EditorNode</span> <span class="o">*</span><span class="n">p_editor</span><span class="p">);</span><div class="verbose expandable"><span class="error2">&lt;--- Class 'ScriptEditor' has a constructor with 1 argument that is not explicit. <span class="marker">[+]</span></span><div class="content">Class &apos;ScriptEditor&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.</div></div>
+</span><a name="line-468"></a>	<span class="o">~</span><span class="n">ScriptEditor</span><span class="p">();</span>
+<a name="line-469"></a><span class="p">};</span>
+<a name="line-470"></a>
+<a name="line-471"></a><span class="n">class</span> <span class="nl">ScriptEditorPlugin</span> <span class="p">:</span> <span class="n">public</span> <span class="n">EditorPlugin</span> <span class="p">{</span>
+<a name="line-472"></a>	<span class="n">GDCLASS</span><span class="p">(</span><span class="n">ScriptEditorPlugin</span><span class="p">,</span> <span class="n">EditorPlugin</span><span class="p">);</span>
+<a name="line-473"></a>
+<a name="line-474"></a>	<span class="n">ScriptEditor</span> <span class="o">*</span><span class="n">script_editor</span><span class="p">;</span>
+<a name="line-475"></a>	<span class="n">EditorNode</span> <span class="o">*</span><span class="n">editor</span><span class="p">;</span>
+<a name="line-476"></a>
+<a name="line-477"></a><span class="nl">public</span><span class="p">:</span>
+<a name="line-478"></a>	<span class="n">virtual</span> <span class="n">String</span> <span class="n">get_name</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="s">&quot;Script&quot;</span><span class="p">;</span> <span class="p">}</span>
+<a name="line-479"></a>	<span class="kt">bool</span> <span class="n">has_main_screen</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span> <span class="p">}</span>
+<a name="line-480"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="n">edit</span><span class="p">(</span><span class="n">Object</span> <span class="o">*</span><span class="n">p_object</span><span class="p">);</span>
+<a name="line-481"></a>	<span class="n">virtual</span> <span class="kt">bool</span> <span class="nf">handles</span><span class="p">(</span><span class="n">Object</span> <span class="o">*</span><span class="n">p_object</span><span class="p">)</span> <span class="k">const</span><span class="p">;</span>
+<a name="line-482"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">make_visible</span><span class="p">(</span><span class="kt">bool</span> <span class="n">p_visible</span><span class="p">);</span>
+<a name="line-483"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">selected_notify</span><span class="p">();</span>
+<a name="line-484"></a>
+<a name="line-485"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">save_external_data</span><span class="p">();</span>
+<a name="line-486"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">apply_changes</span><span class="p">();</span>
+<a name="line-487"></a>
+<a name="line-488"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">restore_global_state</span><span class="p">();</span>
+<a name="line-489"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">save_global_state</span><span class="p">();</span>
+<a name="line-490"></a>
+<a name="line-491"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">set_window_layout</span><span class="p">(</span><span class="n">Ref</span><span class="o">&lt;</span><span class="n">ConfigFile</span><span class="o">&gt;</span> <span class="n">p_layout</span><span class="p">);</span>
+<a name="line-492"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">get_window_layout</span><span class="p">(</span><span class="n">Ref</span><span class="o">&lt;</span><span class="n">ConfigFile</span><span class="o">&gt;</span> <span class="n">p_layout</span><span class="p">);</span>
+<a name="line-493"></a>
+<a name="line-494"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">get_breakpoints</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">p_breakpoints</span><span class="p">);</span>
+<a name="line-495"></a>
+<a name="line-496"></a>	<span class="n">virtual</span> <span class="kt">void</span> <span class="nf">edited_scene_changed</span><span class="p">();</span>
+<a name="line-497"></a>
+<a name="line-498"></a><span class="hll">	<span class="n">ScriptEditorPlugin</span><span class="p">(</span><span class="n">EditorNode</span> <span class="o">*</span><span class="n">p_node</span><span class="p">);</span><div class="verbose expandable"><span class="error2">&lt;--- Class 'ScriptEditorPlugin' has a constructor with 1 argument that is not explicit. <span class="marker">[+]</span></span><div class="content">Class &apos;ScriptEditorPlugin&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.</div></div>
+</span><a name="line-499"></a>	<span class="o">~</span><span class="n">ScriptEditorPlugin</span><span class="p">();</span>
+<a name="line-500"></a><span class="p">};</span>
+<a name="line-501"></a>
+<a name="line-502"></a><span class="cp">#endif </span><span class="c1">// SCRIPT_EDITOR_PLUGIN_H</span>
+</pre></div>
+</td></tr></table>
+    </div>
+    <div id="footer" class="footer">
+      <p>
+        Created by Cppcheck 2.7 (<a href="https://cppcheck.sourceforge.io">Sourceforge</a>, <a href="irc://irc.freenode.net/cppcheck">IRC</a>)
+      </p>
+    </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,234 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cppcheck - HTML report - Godot - branch: master, commit: 215acd52e82f4c575abb715e25e54558deeef998 (2025-04-11)</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+    <script>
+      function getStyle(el, styleProp) {
+        var y;
+
+        if (el.currentStyle) {
+          y = el.currentStyle[styleProp];
+        } else if (window.getComputedStyle) {
+          y = document.defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
+        }
+
+        return y;
+      }
+
+      function toggle() {
+        var el = this.expandable_content;
+        var mark = this.expandable_marker;
+
+        if (el.style.display === "block") {
+          el.style.display = "none";
+          mark.textContent = "[+]";
+        } else {
+          el.style.display = "block";
+          mark.textContent = "[-]";
+        }
+      }
+
+      function initExpandables() {
+        var elements = document.querySelectorAll(".expandable");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var el = elements[i];
+          var clickable = el.querySelector("span");
+          var marker = clickable.querySelector(".marker");
+          var content = el.querySelector(".content");
+          var width = clickable.clientWidth - parseInt(getStyle(content, "padding-left")) - parseInt(getStyle(content, "padding-right"));
+          content.style.width = width + "px";
+          clickable.expandable_content = content;
+          clickable.expandable_marker = marker;
+          clickable.addEventListener("click", toggle);
+        }
+      }
+
+      function toggleDisplay(cb) {
+        var elements = document.querySelectorAll("." + cb.id);
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("id-filtered", !cb.checked);
+        }
+
+        updateFileRows();
+      }
+
+      function toggleSeverity(cb) {
+        cb.parentElement.classList.toggle("unchecked", !cb.checked);
+        var elements = document.querySelectorAll(".sev_" + cb.id);
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("severity-filtered", !cb.checked);
+        }
+
+        updateFileRows();
+      }
+
+      function toggleTool(cb) {
+        cb.parentElement.classList.toggle("unchecked", !cb.checked);
+
+        var elements;
+        if (cb.id == "clang-tidy")
+            elements = document.querySelectorAll("[class^=clang-tidy-]");
+        else
+            elements = document.querySelectorAll(".issue:not([class^=clang-tidy-])");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("tool-filtered", !cb.checked);
+        }
+
+        updateFileRows();
+      }
+
+      function toggleAll() {
+        var elements = document.querySelectorAll(".idToggle");
+
+        // starting from 1 since 0 is the "toggle all" input
+        for (var i = 1, len = elements.length; i < len; i++) {
+          var changed = elements[i].checked != elements[0].checked;
+          if (changed) {
+            elements[i].checked = elements[0].checked;
+            toggleDisplay(elements[i]);
+          }
+        }
+      }
+
+      function filterFile(filter) {
+        var elements = document.querySelectorAll(".fileEntry");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var visible = elements[i].querySelector("tr").querySelector("td").textContent.toLowerCase().includes(filter.toLowerCase());
+          elements[i].classList.toggle("text-filtered", !visible);
+        }
+      }
+
+      function filterText(text) {
+        filter = text.toLowerCase();
+        var elements = document.querySelectorAll(".issue");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var visible = false;
+          var fields = elements[i].querySelectorAll("td");
+          for (var n = 0, num = fields.length; n < num; n++) {
+            if (fields[n].textContent.toLowerCase().includes(filter)) {
+              visible = true;
+              break;
+            }
+          }
+          elements[i].classList.toggle("text-filtered", !visible);
+        }
+
+        updateFileRows();
+      }
+
+      function updateFileRows(element) {
+        var elements = document.querySelectorAll(".fileEntry");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var visible = elements[i].querySelector(".issue:not(.id-filtered):not(.severity-filtered):not(.tool-filtered):not(.text-filtered)");
+          elements[i].classList.toggle("file-filtered", !visible);
+        }
+      }
+
+      window.addEventListener("load", initExpandables);
+    </script>
+  </head>
+  <body>
+    <div id="wrapper">
+    <div id="header" class="header">
+      <h1>Cppcheck report - Godot - branch: master, commit: 215acd52e82f4c575abb715e25e54558deeef998 (2025-04-11): Statistics</h1>
+
+    </div>
+
+    <div id="menu_index">
+     <p><a href="index.html">Back to summary</a> </p>
+
+    </div>
+    <div id="content_index">
+<p><span class="statHeader">Top 10 files for error severity, total findings: 47</span><br>
+&#160;&#160;&#160;8&#160;<a href="298.html">  modules/text_server_adv/text_server_adv.cpp</a><br>
+&#160;&#160;&#160;7&#160;<a href="301.html">  modules/text_server_fb/text_server_fb.cpp</a><br>
+&#160;&#160;&#160;3&#160;<a href="40.html">  core/os/memory.cpp</a><br>
+&#160;&#160;&#160;2&#160;<a href="542.html">  servers/rendering/shader_preprocessor.cpp</a><br>
+&#160;&#160;&#160;2&#160;<a href="541.html">  servers/rendering/shader_language.cpp</a><br>
+&#160;&#160;&#160;2&#160;<a href="534.html">  servers/rendering/renderer_rd/storage_rd/material_storage.cpp</a><br>
+&#160;&#160;&#160;2&#160;<a href="310.html">  modules/webrtc/webrtc_multiplayer_peer.cpp</a><br>
+&#160;&#160;&#160;2&#160;<a href="195.html">  main/main_timer_sync.cpp</a><br>
+&#160;&#160;&#160;2&#160;<a href="85.html">  drivers/gles3/storage/material_storage.cpp</a><br>
+&#160;&#160;&#160;2&#160;<a href="49.html">  core/string/ustring.cpp</a><br>
+</p>
+<p><span class="statHeader">Top 10 files for warning severity, total findings: 195</span><br>
+&#160;&#160;&#160;52&#160;<a href="85.html">  drivers/gles3/storage/material_storage.cpp</a><br>
+&#160;&#160;&#160;12&#160;<a href="393.html">  scene/3d/lightmapper.h</a><br>
+&#160;&#160;&#160;12&#160;<a href="26.html">  core/math/static_raycaster.h</a><br>
+&#160;&#160;&#160;8&#160;&#160;<a href="20.html">  core/math/convex_hull.cpp</a><br>
+&#160;&#160;&#160;6&#160;&#160;<a href="31.html">  core/object/callable_method_pointer.h</a><br>
+&#160;&#160;&#160;5&#160;&#160;<a href="76.html">  drivers/gles3/storage/material_storage.h</a><br>
+&#160;&#160;&#160;4&#160;&#160;<a href="337.html">  platform/android/variant/callable_jni.cpp</a><br>
+&#160;&#160;&#160;4&#160;&#160;<a href="240.html">  modules/godot_physics_3d/gjk_epa.cpp</a><br>
+&#160;&#160;&#160;3&#160;&#160;<a href="539.html">  servers/rendering/rendering_device_graph.cpp</a><br>
+&#160;&#160;&#160;3&#160;&#160;<a href="533.html">  servers/rendering/renderer_rd/storage_rd/light_storage.cpp</a><br>
+</p>
+<p><span class="statHeader">Top 10 files for portability severity, total findings: 93</span><br>
+&#160;&#160;&#160;20&#160;<a href="507.html">  servers/rendering/renderer_rd/effects/copy_effects.cpp</a><br>
+&#160;&#160;&#160;14&#160;<a href="534.html">  servers/rendering/renderer_rd/storage_rd/material_storage.cpp</a><br>
+&#160;&#160;&#160;14&#160;<a href="85.html">  drivers/gles3/storage/material_storage.cpp</a><br>
+&#160;&#160;&#160;9&#160;&#160;<a href="544.html">  servers/rendering_server.cpp</a><br>
+&#160;&#160;&#160;4&#160;&#160;<a href="164.html">  editor/plugins/particles_editor_plugin.cpp</a><br>
+&#160;&#160;&#160;2&#160;&#160;<a href="535.html">  servers/rendering/renderer_rd/storage_rd/mesh_storage.cpp</a><br>
+&#160;&#160;&#160;2&#160;&#160;<a href="527.html">  servers/rendering/renderer_rd/renderer_canvas_render_rd.cpp</a><br>
+&#160;&#160;&#160;2&#160;&#160;<a href="519.html">  servers/rendering/renderer_rd/effects/tone_mapper.cpp</a><br>
+&#160;&#160;&#160;2&#160;&#160;<a href="517.html">  servers/rendering/renderer_rd/effects/ss_effects.cpp</a><br>
+&#160;&#160;&#160;2&#160;&#160;<a href="514.html">  servers/rendering/renderer_rd/effects/luminance.cpp</a><br>
+</p>
+<p><span class="statHeader">Top 10 files for performance severity, total findings: 307</span><br>
+&#160;&#160;&#160;14&#160;<a href="510.html">  servers/rendering/renderer_rd/storage_rd/texture_storage.h</a><br>
+&#160;&#160;&#160;11&#160;<a href="36.html">  core/object/object.h</a><br>
+&#160;&#160;&#160;9&#160;&#160;<a href="424.html">  scene/debugger/scene_debugger.h</a><br>
+&#160;&#160;&#160;7&#160;&#160;<a href="258.html">  modules/lightmapper_rd/lightmapper_rd.h</a><br>
+&#160;&#160;&#160;6&#160;&#160;<a href="421.html">  scene/animation/tween.cpp</a><br>
+&#160;&#160;&#160;5&#160;&#160;<a href="475.html">  scene/resources/font.h</a><br>
+&#160;&#160;&#160;5&#160;&#160;<a href="382.html">  scene/2d/tile_map_layer.h</a><br>
+&#160;&#160;&#160;5&#160;&#160;<a href="211.html">  modules/gdscript/gdscript_parser.h</a><br>
+&#160;&#160;&#160;5&#160;&#160;<a href="183.html">  editor/plugins/visual_shader_editor_plugin.h</a><br>
+&#160;&#160;&#160;5&#160;&#160;<a href="140.html">  editor/plugins/bone_map_editor_plugin.cpp</a><br>
+</p>
+<p><span class="statHeader">Top 10 files for style severity, total findings: 1308</span><br>
+&#160;&#160;&#160;161&#160;<a href="94.html">  drivers/vulkan/rendering_device_driver_vulkan.cpp</a><br>
+&#160;&#160;&#160;126&#160;<a href="538.html">  servers/rendering/rendering_device_driver.h</a><br>
+&#160;&#160;&#160;79&#160;&#160;<a href="352.html">  platform/linuxbsd/wayland/wayland_thread.cpp</a><br>
+&#160;&#160;&#160;73&#160;&#160;<a href="62.html">  core/variant/variant.h</a><br>
+&#160;&#160;&#160;32&#160;&#160;<a href="76.html">  drivers/gles3/storage/material_storage.h</a><br>
+&#160;&#160;&#160;25&#160;&#160;<a href="88.html">  drivers/gles3/storage/texture_storage.h</a><br>
+&#160;&#160;&#160;20&#160;&#160;<a href="403.html">  scene/3d/physics/physical_bone_3d.h</a><br>
+&#160;&#160;&#160;15&#160;&#160;<a href="51.html">  core/templates/a_hash_map.h</a><br>
+&#160;&#160;&#160;10&#160;&#160;<a href="354.html">  platform/linuxbsd/x11/display_server_x11.cpp</a><br>
+&#160;&#160;&#160;10&#160;&#160;<a href="140.html">  editor/plugins/bone_map_editor_plugin.cpp</a><br>
+</p>
+<p><span class="statHeader">Top 10 files for information severity, total findings: 10</span><br>
+&#160;&#160;&#160;2&#160;<a href="73.html">  drivers/d3d12/rendering_device_driver_d3d12.cpp</a><br>
+&#160;&#160;&#160;2&#160;<a href="6.html">  core/extension/gdextension_library_loader.cpp</a><br>
+&#160;&#160;&#160;1&#160;<a href="96.html">  drivers/windows/net_socket_winsock.cpp</a><br>
+&#160;&#160;&#160;1&#160;<a href="71.html">  drivers/d3d12/rendering_device_driver_d3d12.h</a><br>
+&#160;&#160;&#160;1&#160;<a href="66.html">  core/variant/variant_op.cpp</a><br>
+&#160;&#160;&#160;1&#160;<a href="65.html">  core/variant/variant_construct.cpp</a><br>
+&#160;&#160;&#160;1&#160;<a href="61.html">  core/variant/variant.cpp</a><br>
+&#160;&#160;&#160;1&#160;<a href="4.html">  core/extension/extension_api_dump.cpp</a><br>
+</p>
+
+    </div>
+    <div id="footer" class="footer">
+      <p>
+        Created by Cppcheck 2.7 (<a href="https://cppcheck.sourceforge.io">Sourceforge</a>, <a href="irc://irc.freenode.net/cppcheck">IRC</a>)
+      </p>
+    </div>
+    </div>
+  </body>
+</html>
