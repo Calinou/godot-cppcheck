@@ -11,10 +11,10 @@ on:
 jobs:
   cppcheck:
     name: Run cppcheck and deploy to GitHub Pages
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           # Required to switch to the `gh-pages` branch during the job.
           fetch-depth: 0
@@ -23,7 +23,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           # Pygments is required by cppcheck-htmlreport.
-          sudo apt-get install -qqq build-essential cmake ninja-build python-pygments
+          sudo apt-get install -qqq build-essential cmake ninja-build python3-pygments
 
           curl -L https://github.com/danmar/cppcheck/archive/2.7.tar.gz -o /tmp/cppcheck.tar.gz
           tar xf /tmp/cppcheck.tar.gz --strip-components=1 --one-top-level=/tmp/cppcheck/
@@ -99,7 +99,7 @@ jobs:
           touch "$BASEDIR/.github/dist/.nojekyll"
 
       - name: Deploy to GitHub Pages 🚀
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@v4
         # Only deploy from the `main` branch, and never deploy from pull requests.
         if: ${{ (github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main' }}
         with:
